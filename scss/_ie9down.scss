@@ -1,0 +1,24 @@
+article,
+aside,
+footer,
+header,
+nav,
+section,
+figcaption,
+figure,
+main {
+  display: block;
+}
+
+mark {
+  background-color: #ff0;
+  color: #000;
+}
+
+audio,
+video,
+progress,
+canvas {
+  display: inline-block;
+}
+

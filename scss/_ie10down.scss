@@ -1,0 +1,14 @@
+@import "ie9down";
+
+img {
+  border: none;
+}
+
+[type="checkbox"],
+[type="radio"] {
+  padding: 0;
+}
+
+[hidden] {
+  display: none;
+}
