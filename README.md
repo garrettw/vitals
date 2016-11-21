@@ -1,4 +1,4 @@
-# !(Vitals)[https://raw.githubusercontent.com/garrettw/vitals/master/vitals-logo-b.png]
+# Vitals
 
 A few tools for building modern, flexible websites.
 
