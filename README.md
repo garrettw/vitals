@@ -1,4 +1,4 @@
-# Vitals
+# ![Vitals](https://raw.githubusercontent.com/garrettw/vitals/master/vitals-logo-b.png)
 
 A few tools for building modern, flexible websites.
 
@@ -44,3 +44,12 @@ resembled Bootstrap.
 
 I figured surely it wouldn't take much to adapt Batch into something that would
 allow better semantics. So that's what I've done here.
+
+# Is that it?
+
+Yes, for now. I think there are some existing projects that adequately address
+their goals, such as:
+- [Bourbon/Bitters/Refills](http://bourbon.io/)
+- [Breakpoint](http://breakpoint-sass.com/)
+
+I'll add to this list as I find other useful Sass projects.
