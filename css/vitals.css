@@ -5,6 +5,7 @@
   their authors for influencing this:
   - Normalize.css by Nicolas Gallagher and Jonathan Neal
   - normalize-scss by John Albin
+  - Batch by Martin Hofmann
 ***************************************/
 html {
   -ms-text-size-adjust: 100%;
@@ -22,6 +23,7 @@ body {
   line-height: 1.5;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
 body,
