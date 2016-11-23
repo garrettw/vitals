@@ -1,6 +1,6 @@
 # ![Vitals](https://raw.githubusercontent.com/garrettw/vitals/master/vitals-logo-b.png)
 
-A few tools for building modern, flexible websites.
+A few Sass tools for building modern, flexible websites.
 
 The goal is to be compatible with the most common browsers and versions currently
 in use. For example, older versions of IE (like 6-8) are intentionally not
@@ -44,6 +44,11 @@ resembled Bootstrap.
 
 I figured surely it wouldn't take much to adapt Batch into something that would
 allow better semantics. So that's what I've done here.
+
+You'll notice that there's no compiled version of the grid system.
+That's intentional; my entire purpose for making it was for it to be used with
+Sass to generate grid code for semantic CSS selectors. That's just not possible
+with pure CSS. So if you want a pure CSS flexbox grid system, check out [Batch](http://martskin.github.io/batch/).
 
 # Is that it?
 

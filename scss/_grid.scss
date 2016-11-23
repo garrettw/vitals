@@ -12,9 +12,9 @@ $vg-border-color: #666 !default;
 
 // Grid wrapper
 %vitals-grid {
-  display: flex;
-  align-items: stretch;
-  flex-flow: row wrap;
+	display: flex;
+	flex-flow: row wrap;
+	align-items: stretch;
 }
 
 // Grid modifiers
@@ -23,58 +23,58 @@ $vg-border-color: #666 !default;
 }
 
 @mixin vg-reverse {
-  flex-direction: row-reverse;
+	flex-direction: row-reverse;
 }
 
 @mixin vg-valign-top {
-  align-items: flex-start;
+	align-items: flex-start;
 }
 
 @mixin vg-valign-center {
-  align-items: center;
+	align-items: center;
 }
 
 @mixin vg-valign-bottom {
-  align-items: flex-end;
+	align-items: flex-end;
 }
 
 @mixin vg-align-left {
-  justify-content: flex-start;
+	justify-content: flex-start;
 }
 
 @mixin vg-align-center {
-  justify-content: center;
+	justify-content: center;
 }
 
 @mixin vg-align-right {
-  justify-content: flex-end;
+	justify-content: flex-end;
 }
 
 // Cell setup/modifiers
 @mixin vg-cell($num, $denom, $gutter: false, $guttersize: $vg-gutter) {
-  $cell-size-percentage: (percentage($num / $denom));
-  flex: 1 0 auto; /* forces usage of min-width, width, max-width instead */
+	$cell-size-percentage: (percentage($num / $denom));
+	flex: 1 0 auto; /* forces usage of min-width, width, max-width instead */
 
-  @if $gutter == true {
-    margin: ($guttersize / 2);
-    width: calc(#{$cell-size-percentage} - #{$guttersize});
-  } @else {
-    width: $cell-size-percentage;
-  }
+	@if $gutter == true {
+		margin: ($guttersize / 2);
+		width: calc(#{$cell-size-percentage} - #{$guttersize});
+	} @else {
+		width: $cell-size-percentage;
+	}
 }
 
 @mixin vg-cell-border($size: $vg-border, $color: $vg-border-color) {
-  border: $size solid $color;
+	border: $size solid $color;
 }
 
 @mixin vg-cell-valign-top {
-  align-self: flex-start;
+	align-self: flex-start;
 }
 
 @mixin vg-cell-valign-bottom {
-  align-self: flex-end;
+	align-self: flex-end;
 }
 
 @mixin vg-cell-valign-center {
-  align-self: center;
+	align-self: center;
 }
