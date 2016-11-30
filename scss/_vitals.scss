@@ -4,7 +4,7 @@
 //	Thanks to the following projects and
 //	their authors for influencing this:
 //	- Normalize.css by Nicolas Gallagher and Jonathan Neal
-//	- Normalize-scss by John Albin
+//	- normalize-scss by John Albin
 //  - Fix.css by Jayden Seric
 //	- Batch by Martin Hofmann
 ////////////////////////////////////////////////////////////
@@ -15,8 +15,11 @@ $stdvgap: 1.125rem;
 
 html {
 	box-sizing: border-box;
-	-ms-text-size-adjust: 100%;
 	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
+	font-size: 1em;
 }
 
 *, *::before, *::after {
@@ -26,10 +29,7 @@ html {
 body {
 	overflow-x: hidden;
 	min-height: 100%;
-	font-size: 1em;
 	line-height: 1.5;
-	-moz-osx-font-smoothing: grayscale;
-	-webkit-font-smoothing: antialiased;
 }
 
 body,
@@ -47,6 +47,7 @@ blockquote,
 figure {
 	margin: 0;
 	padding: 0;
+	font-size: inherit;
 }
 
 p,
@@ -76,15 +77,6 @@ abbr[title] {
 	border-bottom: none;
 	text-decoration: underline;
 	text-decoration: underline dotted;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-	font-size: inherit;
 }
 
 strong {
@@ -130,6 +122,7 @@ img,
 svg {
 	max-width: 100%;
 	height: auto;
+	vertical-align: middle;
 	border: none;
 }
 
@@ -227,6 +220,7 @@ textarea {
 	font: inherit;
 }
 
+main,
 details,
 menu {
 	display: block;
@@ -254,4 +248,8 @@ dfn {
 audio:not([controls]) {
 	display: none;
 	height: 0;
+}
+
+iframe {
+	border: none;
 }
