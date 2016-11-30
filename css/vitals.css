@@ -1,17 +1,10 @@
-/***************************************
-  Vitals v0.1.0
-
-  Thanks to the following projects and
-  their authors for influencing this:
-  - Normalize.css by Nicolas Gallagher and Jonathan Neal
-  - normalize-scss by John Albin
-  - Batch by Martin Hofmann
-***************************************/
 html {
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  min-height: 100%;
   box-sizing: border-box;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-size: 1em;
 }
 
 *, *::before, *::after {
@@ -19,11 +12,9 @@ html {
 }
 
 body {
-  font-size: 1em;
-  line-height: 1.5;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+  min-height: 100%;
+  line-height: 1.5;
 }
 
 body,
@@ -36,10 +27,12 @@ h6,
 p,
 ol,
 ul,
+li,
 blockquote,
 figure {
   margin: 0;
   padding: 0;
+  font-size: inherit;
 }
 
 p,
@@ -59,25 +52,16 @@ blockquote {
 }
 
 hr {
-  margin: 1.125rem 0;
+  overflow: visible;
   box-sizing: content-box;
   height: 0;
-  overflow: visible;
+  margin: 1.125rem 0;
 }
 
 abbr[title] {
   border-bottom: none;
   text-decoration: underline;
   text-decoration: underline dotted;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-size: inherit;
 }
 
 strong {
@@ -105,9 +89,9 @@ small {
 
 sub,
 sup {
+  position: relative;
   font-size: 0.75em;
   line-height: 0;
-  position: relative;
   vertical-align: baseline;
 }
 
@@ -121,9 +105,10 @@ sup {
 
 img,
 svg {
-  border: none;
-  height: auto;
   max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+  border: none;
 }
 
 svg:not(:root) {
@@ -135,8 +120,8 @@ input,
 optgroup,
 select,
 textarea {
-  margin: 0;
   max-width: 100%;
+  margin: 0;
   font-family: inherit;
   font-size: 1em;
   line-height: inherit;
@@ -152,10 +137,10 @@ html [type="button"],
 [type="reset"],
 [type="submit"],
 .button {
+  display: inline-block;
+  overflow: visible;
   -moz-appearance: button;
   -webkit-appearance: button;
-  overflow: visible;
-  display: inline-block;
   padding: 0.125em 0.375em;
   text-decoration: none;
   cursor: pointer;
@@ -165,8 +150,8 @@ html [type="button"]::-moz-focus-inner,
 [type="reset"]::-moz-focus-inner,
 [type="submit"]::-moz-focus-inner,
 .button::-moz-focus-inner {
-  border: none;
   padding: 0;
+  border: none;
 }
 button:-moz-focusring,
 html [type="button"]:-moz-focusring,
@@ -199,19 +184,19 @@ html [type="button"][disabled],
 }
 
 button {
-  background: none;
-  border: none;
   font: inherit;
   -webkit-font-smoothing: inherit;
   letter-spacing: inherit;
+  background: none;
+  border: none;
 }
 
 legend {
-  color: inherit;
   display: table;
   max-width: 100%;
   margin-left: -0.3125rem;
   padding: 0 0.3125rem;
+  color: inherit;
   white-space: normal;
 }
 
@@ -238,6 +223,7 @@ textarea {
   font: inherit;
 }
 
+main,
 details,
 menu {
   display: block;
@@ -252,10 +238,10 @@ template {
 }
 
 table {
+  width: 100%;
   margin: 1.125rem 0;
   border-collapse: collapse;
   border-spacing: 0;
-  width: 100%;
 }
 
 dfn {
@@ -265,6 +251,10 @@ dfn {
 audio:not([controls]) {
   display: none;
   height: 0;
+}
+
+iframe {
+  border: none;
 }
 
 /*# sourceMappingURL=vitals.css.map */
