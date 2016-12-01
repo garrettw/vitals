@@ -223,6 +223,14 @@ textarea {
   font: inherit;
 }
 
+article,
+aside,
+footer,
+header,
+nav,
+section,
+figcaption,
+figure,
 main,
 details,
 menu {
@@ -233,7 +241,7 @@ summary {
   display: list-item;
 }
 
-template {
+template, [hidden] {
   display: none;
 }
 
@@ -255,6 +263,23 @@ audio:not([controls]) {
 
 iframe {
   border: none;
+}
+
+mark {
+  background-color: #ff0;
+  color: #000;
+}
+
+audio,
+video,
+progress,
+canvas {
+  display: inline-block;
+}
+
+[type="checkbox"],
+[type="radio"] {
+  padding: 0;
 }
 
 /*# sourceMappingURL=vitals.css.map */
