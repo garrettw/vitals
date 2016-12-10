@@ -24,14 +24,14 @@ liked Foundation better. But as I started to look into using Sass, while Foundat
 had a Sass version, I came to find that there were some grid systems that were
 built primarily for Sass usage.
 
-... like Bourbon Neat. I was about to adopt that as my own when I realized that
-it was a float-based grid like the Bootstrap and Foundation I had left behind.
-But I did appreciate its emphasis on semantics, and I wanted to hang onto that
-as I looked for a flexbox-based system.
+... like [Bourbon Neat](http://neat.bourbon.io/). I was about to adopt that as
+my own when I realized that it was a float-based grid like the Bootstrap and
+Foundation I had left behind. But I did appreciate its emphasis on semantics,
+and I wanted to hang onto that as I looked for a flexbox-based system.
 
-So I found a project called Batch that implemented flexbox while using Bourbon
-as a dependency. It looked cool until I saw the unsemantic class names that
-resembled Bootstrap.
+So I found a project called [Batch](http://martskin.github.io/batch/)
+that implemented flexbox using Sass. It looked cool until I saw the unsemantic
+class names that resembled Bootstrap.
 
 I figured surely it wouldn't take much to adapt Batch into something that would
 allow better semantics. So that's what I've done here.
@@ -48,5 +48,8 @@ their goals, such as:
 - [Bourbon/Bitters/Refills](http://bourbon.io/)
 - [Breakpoint](http://breakpoint-sass.com/)
 - [Typey](https://github.com/jptaranto/typey)
+- [Chroma](https://github.com/JohnAlbin/chroma)
+- [ColorMeSass](https://github.com/RichardBray/color-me-sass)
+- [Color Schemer](https://github.com/at-import/color-schemer)
 
 I'll add to this list as I find other useful Sass projects.
