@@ -51,16 +51,15 @@ $vg-border-color: #666 !default;
 }
 
 // Cell setup/modifiers
-@mixin vg-cell($num, $denom, $gutter: false, $guttersize: $vg-gutter) {
-	$cell-size-percentage: (percentage($num / $denom));
+@mixin vg-cell($num, $denom) {
 	flex: 1 0 auto; /* forces usage of min-width, width, max-width instead */
+	width: percentage($num / $denom);
+}
 
-	@if $gutter == true {
-		margin: ($guttersize / 2);
-		width: calc(#{$cell-size-percentage} - #{$guttersize});
-	} @else {
-		width: $cell-size-percentage;
-	}
+@mixin vg-cellWithGutter($num, $denom, $guttersize: $vg-gutter) {
+	flex: 1 0 auto; /* forces usage of min-width, width, max-width instead */
+	margin: ($guttersize / 2);
+	width: calc(#{percentage($num / $denom)} - #{$guttersize});
 }
 
 @mixin vg-cell-border($size: $vg-border, $color: $vg-border-color) {
