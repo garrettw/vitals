@@ -5,7 +5,7 @@
 //	their authors for influencing this:
 //	- Normalize.css by Nicolas Gallagher and Jonathan Neal
 //	- normalize-scss by John Albin
-//  - Fix.css by Jayden Seric
+//	- Fix.css by Jayden Seric
 //	- Batch by Martin Hofmann
 //	- Twenty Sixteen by WordPress
 ////////////////////////////////////////////////////////////
@@ -16,13 +16,13 @@ $stdvgap: 1.125rem;
 
 html {
 	box-sizing: border-box;
+	font-size: 1em;
 	-webkit-text-size-adjust: 100%;
 	-ms-text-size-adjust: 100%;
 	text-rendering: geometricPrecision;
-	font-size: 1em;
 }
 
-*, *::before, *::after {
+*, *:before, *:after {
 	box-sizing: inherit;
 }
 
