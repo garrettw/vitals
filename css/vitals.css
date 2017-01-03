@@ -1,12 +1,12 @@
 html {
   box-sizing: border-box;
+  font-size: 1em;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
   text-rendering: geometricPrecision;
-  font-size: 1em;
 }
 
-*, *::before, *::after {
+*, *:before, *:after {
   box-sizing: inherit;
 }
 
