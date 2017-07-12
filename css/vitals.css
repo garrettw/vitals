@@ -132,9 +132,9 @@ select {
 }
 
 button,
-html [type="button"],
-[type="reset"],
-[type="submit"],
+html input[type="button"],
+input[type="reset"],
+input[type="submit"],
 .button {
   display: inline-block;
   overflow: visible;
@@ -145,39 +145,39 @@ html [type="button"],
   cursor: pointer;
 }
 button::-moz-focus-inner,
-html [type="button"]::-moz-focus-inner,
-[type="reset"]::-moz-focus-inner,
-[type="submit"]::-moz-focus-inner,
+html input[type="button"]::-moz-focus-inner,
+input[type="reset"]::-moz-focus-inner,
+input[type="submit"]::-moz-focus-inner,
 .button::-moz-focus-inner {
   padding: 0;
   border: none;
 }
 button:-moz-focusring,
-html [type="button"]:-moz-focusring,
-[type="reset"]:-moz-focusring,
-[type="submit"]:-moz-focusring,
+html input[type="button"]:-moz-focusring,
+input[type="reset"]:-moz-focusring,
+input[type="submit"]:-moz-focusring,
 .button:-moz-focusring {
   outline: 1px dotted ButtonText;
 }
 button:hover, button:focus, button:active,
-html [type="button"]:hover,
-html [type="button"]:focus,
-html [type="button"]:active,
-[type="reset"]:hover,
-[type="reset"]:focus,
-[type="reset"]:active,
-[type="submit"]:hover,
-[type="submit"]:focus,
-[type="submit"]:active,
+html input[type="button"]:hover,
+html input[type="button"]:focus,
+html input[type="button"]:active,
+input[type="reset"]:hover,
+input[type="reset"]:focus,
+input[type="reset"]:active,
+input[type="submit"]:hover,
+input[type="submit"]:focus,
+input[type="submit"]:active,
 .button:hover,
 .button:focus,
 .button:active {
   text-decoration: none;
 }
 button[disabled],
-html [type="button"][disabled],
-[type="reset"][disabled],
-[type="submit"][disabled],
+html input[type="button"][disabled],
+input[type="reset"][disabled],
+input[type="submit"][disabled],
 .button[disabled] {
   cursor: default;
 }
@@ -193,6 +193,15 @@ button {
   letter-spacing: inherit;
   background: none;
   border: none;
+}
+
+fieldset {
+  min-width: 0;
+  padding: 0.01rem 0 0;
+}
+
+body:not(:-moz-handler-blocked) fieldset {
+  display: table-cell;
 }
 
 legend {
@@ -290,8 +299,8 @@ canvas {
   /* vertical-align: baseline; */
 }
 
-[type="checkbox"],
-[type="radio"] {
+input[type="checkbox"],
+input[type="radio"] {
   padding: 0;
 }
 

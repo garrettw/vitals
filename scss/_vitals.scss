@@ -148,9 +148,9 @@ select {
 }
 
 button,
-html [type="button"],
-[type="reset"],
-[type="submit"],
+html input[type="button"],
+input[type="reset"],
+input[type="submit"],
 .button {
 	display: inline-block;
 	overflow: visible;
@@ -191,6 +191,15 @@ button {
 	letter-spacing: inherit;
 	background: none;
 	border: none;
+}
+
+fieldset {
+	min-width: 0;
+	padding: 0.01rem 0 0;
+}
+
+body:not(:-moz-handler-blocked) fieldset {
+	display: table-cell;
 }
 
 legend {
@@ -288,7 +297,7 @@ canvas {
 	/* vertical-align: baseline; */
 }
 
-[type="checkbox"],
-[type="radio"] {
+input[type="checkbox"],
+input[type="radio"] {
 	padding: 0;
 }
