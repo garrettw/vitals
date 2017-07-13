@@ -13,6 +13,7 @@
 @import "grid";
 
 $stdvgap: 1.125rem;
+$stdhgap: 1.25rem;
 
 html {
 	box-sizing: border-box;
@@ -63,7 +64,7 @@ samp {
 }
 
 blockquote {
-	margin: $stdvgap 2rem;
+	margin: $stdvgap $stdhgap*1.6;
 }
 
 hr {
@@ -205,8 +206,8 @@ body:not(:-moz-handler-blocked) fieldset {
 legend {
 	display: table;
 	max-width: 100%;
-	margin-left: -0.3125rem;
-	padding: 0 0.3125rem;
+	margin-left: $stdhgap*-0.25;
+	padding: 0 $stdhgap*0.25;
 	border: none;
 	color: inherit;
 	white-space: normal;
