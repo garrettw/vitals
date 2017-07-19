@@ -26,18 +26,6 @@ $vg-border-color: #666 !default;
 	flex-direction: row-reverse;
 }
 
-@mixin vg-valign-top {
-	align-items: flex-start;
-}
-
-@mixin vg-valign-center {
-	align-items: center;
-}
-
-@mixin vg-valign-bottom {
-	align-items: flex-end;
-}
-
 @mixin vg-align-left {
 	justify-content: flex-start;
 }
@@ -50,13 +38,25 @@ $vg-border-color: #666 !default;
 	justify-content: flex-end;
 }
 
+@mixin vg-valign-top {
+	align-items: flex-start;
+}
+
+@mixin vg-valign-middle {
+	align-items: center;
+}
+
+@mixin vg-valign-bottom {
+	align-items: flex-end;
+}
+
 // Cell setup/modifiers
 @mixin vg-cell($num, $denom) {
 	flex: 1 0 auto; /* forces usage of min-width, width, max-width instead */
 	width: percentage($num / $denom);
 }
 
-@mixin vg-cellWithGutter($num, $denom, $guttersize: $vg-gutter) {
+@mixin vg-cell-with-gutter($num, $denom, $guttersize: $vg-gutter) {
 	flex: 1 0 auto; /* forces usage of min-width, width, max-width instead */
 	margin: ($guttersize / 2);
 	width: calc(#{percentage($num / $denom)} - #{$guttersize});
@@ -70,10 +70,10 @@ $vg-border-color: #666 !default;
 	align-self: flex-start;
 }
 
-@mixin vg-cell-valign-bottom {
-	align-self: flex-end;
+@mixin vg-cell-valign-middle {
+	align-self: center;
 }
 
-@mixin vg-cell-valign-center {
-	align-self: center;
+@mixin vg-cell-valign-bottom {
+	align-self: flex-end;
 }
