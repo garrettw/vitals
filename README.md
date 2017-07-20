@@ -1,13 +1,20 @@
 # ![Vitals](https://raw.githubusercontent.com/garrettw/vitals/master/vitals-logo-b.png)
 
-A few Sass tools for building modern, flexible websites.
+Vitals is simply a bundle of two Sass tools for building modern, flexible websites: a normalize/reset and a
+flexbox-based grid layout system.
+
+The normalize/reset is my own (smaller) spin on Normalize.css, and it is also
+available in pure CSS.
 
 The goal is to be compatible with the most common browsers and versions currently
 in use. For example, older versions of IE (like 6-8) are intentionally not
 supported. Very few people use those versions, and if support for them is needed,
 I'm not interested in tackling that as it involves a lot of extra work for not much benefit.
 
-## How to use it in your Sass project
+**I highly recommend combining Vitals Grid with the excellent [Breakpoint](https://github.com/at-import/breakpoint)
+library to create responsive grids.**
+
+## How to use Vitals in your Sass project
 
 If you grab both `_vitals.scss` and `_grid.scss` and put them in the same directory
 as the main file you're working on, you can use:
@@ -15,8 +22,11 @@ as the main file you're working on, you can use:
 @import "vitals";
 ```
 That's all you need in order to use the main part of Vitals.
+However, it also includes a few constants you can use in your own code:
+- `$stdvgap` is set to 1.125rem (18px in a typical browser). This controls the vertical rhythm.
+- `$stdhgap` is set to 1.25rem (20px in a typical browser). This is currently used only with blockquote and legend elements to calculate reasonable horizontal margins.
 
-### How to use the grid
+### How to use Vitals Grid
 
 Any class you write for elements that are to be grid containers must begin with:
 ```scss
@@ -62,18 +72,15 @@ Then, you can further tweak your cells using the following:
     @include vg-cell-valign-bottom;
 ```
 
-## About the parts of Vitals
+Vitals Grid allows you to set your own defaults for the above mixins to use.
 
-### The CSS reset
+**Before** importing Vitals into your SCSS code, you may set the following variables
+to meet your needs.
+- `$vg-gutter` - default is 0.625rem (10px in a typical browser). Used in `@vg-gutter` and `@vg-cell-with-gutter`.
+- `$vg-border-width` - default is 0.0625rem (1px in a typical browser). Used in `@vg-cell-border`.
+- `$vg-border-color` - default is #666 (gray). Used in `@vg-cell-border`.
 
-Under `scss` you'll find `_vitals.scss` which is the main thing you'll want to
-`@import` into your Sass project. It's my own (smaller) spin on Normalize.css.
-
-Under `css` I've included the compiled forms of the SCSS for those who don't
-want to use Sass. The `*.min.css` versions are best to use in production, of
-course.
-
-### The grid layout system
+## About the grid layout system
 
 At some point in my journey as a web dev, I came across Bootstrap like so many have.
 Then at a later date, I decided to see what else was out there, and decided I

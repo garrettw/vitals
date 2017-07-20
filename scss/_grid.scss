@@ -1,11 +1,8 @@
 // Cell Gutter
 $vg-gutter: 0.625rem !default;
 
-// Cell Padding
-$vg-padding: 0.3125rem !default;
-
 // Cell Border
-$vg-border: 0.0625rem !default;
+$vg-border-width: 0.0625rem !default;
 
 // Cell Border Color
 $vg-border-color: #666 !default;
@@ -62,8 +59,8 @@ $vg-border-color: #666 !default;
 	width: calc(#{percentage($num / $denom)} - #{$guttersize});
 }
 
-@mixin vg-cell-border($size: $vg-border, $color: $vg-border-color) {
-	border: $size solid $color;
+@mixin vg-cell-border($width: $vg-border-width, $color: $vg-border-color) {
+	border: $width solid $color;
 }
 
 @mixin vg-cell-valign-top {
