@@ -52,13 +52,13 @@ Now that you have a container, let's make some cells to put in it.
 Put ONE of these in your cell classes:
 ```scss
     // creates a cell 1/3 of the container's width
-    @include vg-cell(1, 3);
+    @include vg-cell(1/3);
 
     // creates a cell 2/3 of the container's width including a gutter of the default size
-    @include vg-cell-with-gutter(2, 3);
+    @include vg-cell-with-gutter(2/3);
 
     // creates a cell 1/4 of the container's width including a custom gutter size of 1rem
-    @include vg-cell-with-gutter(1, 4, 1rem)
+    @include vg-cell-with-gutter(1/4, 1rem)
 ```
 Then, you can further tweak your cells using the following:
 ```scss

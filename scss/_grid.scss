@@ -48,15 +48,15 @@ $vg-border-color: #666 !default;
 }
 
 // Cell setup/modifiers
-@mixin vg-cell($num, $denom) {
-	flex: 1 0 auto; /* forces usage of min-width, width, max-width instead */
-	width: percentage($num / $denom);
+@mixin vg-cell($fraction) {
+	flex: 1 0 auto; /* use min-width, width, max-width to adjust width behavior */
+	width: percentage($fraction);
 }
 
-@mixin vg-cell-with-gutter($num, $denom, $guttersize: $vg-gutter) {
-	flex: 1 0 auto; /* forces usage of min-width, width, max-width instead */
+@mixin vg-cell-with-gutter($fraction, $guttersize: $vg-gutter) {
+	flex: 1 0 auto; /* use min-width, width, max-width to adjust width behavior */
 	margin: ($guttersize / 2);
-	width: calc(#{percentage($num / $denom)} - #{$guttersize});
+	width: calc(#{percentage($fraction)} - #{$guttersize});
 }
 
 @mixin vg-cell-border($width: $vg-border-width, $color: $vg-border-color) {
