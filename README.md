@@ -3,6 +3,16 @@
 Vitals is simply a bundle of two Sass tools for building modern, flexible websites: a normalize/reset and a
 flexbox-based grid layout system.
 
+Browser support:
+- IE 11
+- Edge
+- Firefox 28+
+- Chrome 44+
+- Safari/iOS 10.1+
+- Opera 31+
+- Chrome for Android
+- Firefox for Android
+
 The normalize/reset is my own (smaller) spin on Normalize.css, and it is also
 available in pure CSS.
 
@@ -34,9 +44,6 @@ Any class you write for elements that are to be grid containers must begin with:
 ```
 From there, you can use one or more of the following mixins to tweak it:
 ```scss
-    @include vg-gutter; // applies the default horizontal gutter to the container
-    @include vg-gutter(value); // applies a custom horizontal gutter value
-
     @include vg-reverse; // reverses the flow of cells in the grid (like LTR -> RTL)
 
     @include vg-align-left;   // aligns cells to the left of the container
@@ -51,14 +58,14 @@ From there, you can use one or more of the following mixins to tweak it:
 Now that you have a container, let's make some cells to put in it.
 Put ONE of these in your cell classes:
 ```scss
-    // creates a cell 1/3 of the container's width
+    // creates a cell 1/3 of the container's width including a gutter of the default size
     @include vg-cell(1/3);
 
-    // creates a cell 2/3 of the container's width including a gutter of the default size
-    @include vg-cell-with-gutter(2/3);
+    // creates a cell 2/3 of the container's width including a custom gutter size of 1rem
+    @include vg-cell(2/3, 1rem);
 
-    // creates a cell 1/4 of the container's width including a custom gutter size of 1rem
-    @include vg-cell-with-gutter(1/4, 1rem)
+    // creates a cell 1/4 of the container's width including no gutter
+    @include vg-cell(1/4, 0);
 ```
 Then, you can further tweak your cells using the following:
 ```scss
@@ -76,7 +83,7 @@ Vitals Grid allows you to set your own defaults for the above mixins to use.
 
 **Before** importing Vitals into your SCSS code, you may set the following variables
 to meet your needs.
-- `$vg-gutter` - default is 0.625rem (10px in a typical browser). Used in `@vg-gutter` and `@vg-cell-with-gutter`.
+- `$vg-gutter` - default is 0.625rem (10px in a typical browser). Used in `@vg-cell`.
 - `$vg-border-width` - default is 0.0625rem (1px in a typical browser). Used in `@vg-cell-border`.
 - `$vg-border-color` - default is #666 (gray). Used in `@vg-cell-border`.
 

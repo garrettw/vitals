@@ -1,5 +1,5 @@
 // Cell Gutter
-$vg-gutter: 0.625rem !default;
+$vg-gutter: $stdhgap/2 !default;
 
 // Cell Border
 $vg-border-width: 0.0625rem !default;
@@ -15,10 +15,6 @@ $vg-border-color: #666 !default;
 }
 
 // Grid modifiers
-@mixin vg-gutter($gutter: $vg-gutter) {
-	margin: 0 (-$gutter / 2);
-}
-
 @mixin vg-reverse {
 	flex-direction: row-reverse;
 }
@@ -48,15 +44,14 @@ $vg-border-color: #666 !default;
 }
 
 // Cell setup/modifiers
-@mixin vg-cell($fraction) {
-	flex: 1 0 auto; /* use min-width, width, max-width to adjust width behavior */
-	width: percentage($fraction);
+@function vg-cell-gutter($gutter, $fraction) {
+  @return $gutter + ($gutter * $fraction);
 }
 
-@mixin vg-cell-with-gutter($fraction, $guttersize: $vg-gutter) {
-	flex: 1 0 auto; /* use min-width, width, max-width to adjust width behavior */
-	margin: ($guttersize / 2);
-	width: calc(#{percentage($fraction)} - #{$guttersize});
+@mixin vg-cell($fraction, $gutter: $vg-gutter) {
+	flex: 0 1 auto;
+	margin-left: $gutter;
+	width: calc(#{percentage($fraction)} - #{vg-cell-gutter($gutter, $fraction)});
 }
 
 @mixin vg-cell-border($width: $vg-border-width, $color: $vg-border-color) {
