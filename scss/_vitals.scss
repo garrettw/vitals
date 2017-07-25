@@ -10,10 +10,10 @@
 //	- Twenty Sixteen by WordPress
 ////////////////////////////////////////////////////////////
 
-@import "grid";
-
 $stdvgap: 1.125rem;
 $stdhgap: 1.25rem;
+
+@import "grid";
 
 html {
 	box-sizing: border-box;

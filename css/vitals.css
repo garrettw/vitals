@@ -1,67 +1,307 @@
-/*
-Error: Undefined variable: "$stdhgap".
-        on line 2 of scss/_grid.scss
-        from line 13 of scss/_vitals.scss
+html {
+  box-sizing: border-box;
+  font-size: 1em;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  text-rendering: geometricPrecision;
+}
 
-1: ////////////////////////////////////////////////////////////
-2: //	Vitals v0.1.0
-3: //
-4: //	Thanks to the following projects and
-5: //	their authors for influencing this:
-6: //	- Normalize.css by Nicolas Gallagher and Jonathan Neal
-7: //	- normalize-scss by John Albin
+*, *::before, *::after {
+  box-sizing: inherit;
+}
 
-Backtrace:
-scss/_grid.scss:2
-scss/_vitals.scss:13
-/usr/local/rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/script/tree/variable.rb:49:in `_perform'
-/usr/local/rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/script/tree/node.rb:58:in `perform'
-/usr/local/rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/script/tree/operation.rb:64:in `_perform'
-/usr/local/rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/script/tree/node.rb:58:in `perform'
-/usr/local/rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:471:in `visit_variable'
-/usr/local/rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/base.rb:36:in `visit'
-/usr/local/rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:160:in `block in visit'
-/usr/local/rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/stack.rb:79:in `block in with_base'
-/usr/local/rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/stack.rb:115:in `with_frame'
-/usr/local/rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/stack.rb:79:in `with_base'
-/usr/local/rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:160:in `visit'
-/usr/local/rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:328:in `block (2 levels) in visit_import'
-/usr/local/rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:328:in `map'
-/usr/local/rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:328:in `block in visit_import'
-/usr/local/rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/stack.rb:88:in `block in with_import'
-/usr/local/rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/stack.rb:115:in `with_frame'
-/usr/local/rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/stack.rb:88:in `with_import'
-/usr/local/rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:325:in `visit_import'
-/usr/local/rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/base.rb:36:in `visit'
-/usr/local/rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:160:in `block in visit'
-/usr/local/rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/stack.rb:79:in `block in with_base'
-/usr/local/rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/stack.rb:115:in `with_frame'
-/usr/local/rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/stack.rb:79:in `with_base'
-/usr/local/rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:160:in `visit'
-/usr/local/rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
-/usr/local/rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/base.rb:52:in `map'
-/usr/local/rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/base.rb:52:in `visit_children'
-/usr/local/rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:169:in `block in visit_children'
-/usr/local/rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:181:in `with_environment'
-/usr/local/rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:168:in `visit_children'
-/usr/local/rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/base.rb:36:in `block in visit'
-/usr/local/rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:188:in `visit_root'
-/usr/local/rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/base.rb:36:in `visit'
-/usr/local/rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:159:in `visit'
-/usr/local/rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:8:in `visit'
-/usr/local/rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/tree/root_node.rb:36:in `css_tree'
-/usr/local/rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/tree/root_node.rb:29:in `render_with_sourcemap'
-/usr/local/rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/engine.rb:381:in `_render_with_sourcemap'
-/usr/local/rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/engine.rb:298:in `render_with_sourcemap'
-/usr/local/rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/exec/sass_scss.rb:391:in `run'
-/usr/local/rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/exec/sass_scss.rb:63:in `process_result'
-/usr/local/rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/exec/base.rb:52:in `parse'
-/usr/local/rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/exec/base.rb:19:in `parse!'
-/usr/local/rvm/gems/ruby-2.3.0/gems/sass-3.4.22/bin/scss:13:in `<top (required)>'
-/usr/local/rvm/gems/ruby-2.3.0/bin/scss:23:in `load'
-/usr/local/rvm/gems/ruby-2.3.0/bin/scss:23:in `<main>'
-*/
-body:before {
-  white-space: pre;
-  font-family: monospace;
-  content: "Error: Undefined variable: \"$stdhgap\".\A         on line 2 of scss/_grid.scss\A         from line 13 of scss/_vitals.scss\A \A 1: ////////////////////////////////////////////////////////////\A 2: //	Vitals v0.1.0\A 3: //\A 4: //	Thanks to the following projects and\A 5: //	their authors for influencing this:\A 6: //	- Normalize.css by Nicolas Gallagher and Jonathan Neal\A 7: //	- normalize-scss by John Albin"; }
+body {
+  overflow-x: hidden;
+  min-height: 100%;
+  line-height: 1.5;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ol,
+ul,
+li,
+blockquote,
+figure {
+  margin: 0;
+  padding: 0;
+  font-size: inherit;
+}
+
+p,
+pre {
+  margin: 1.125rem 0;
+}
+
+pre,
+code,
+kbd,
+samp {
+  font-size: 1em;
+}
+
+blockquote {
+  margin: 1.125rem 2rem;
+}
+
+hr {
+  overflow: visible;
+  box-sizing: content-box;
+  height: 0;
+  margin: 1.125rem 0;
+}
+
+abbr[title] {
+  border-bottom: none;
+  text-decoration: underline;
+  text-decoration: underline dotted;
+}
+
+strong {
+  font-weight: inherit;
+  font-weight: bolder;
+}
+
+a,
+button {
+  color: inherit;
+}
+
+a {
+  text-decoration: underline;
+}
+
+a,
+a:active:not(.button) {
+  background-color: transparent;
+}
+
+small {
+  font-size: 0.8em;
+}
+
+sub,
+sup {
+  position: relative;
+  font-size: 0.75em;
+  line-height: 0;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+img,
+svg {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+  border: none;
+}
+
+svg:not(:root) {
+  overflow: hidden;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  max-width: 100%;
+  margin: 0;
+  font-family: inherit;
+  font-size: 1em;
+  line-height: inherit;
+}
+
+button,
+select {
+  text-transform: none;
+}
+
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"],
+.button {
+  display: inline-block;
+  overflow: visible;
+  -moz-appearance: button;
+  -webkit-appearance: button;
+  padding: 0.125em 0.375em;
+  text-decoration: none;
+  cursor: pointer;
+}
+button::-moz-focus-inner,
+html input[type="button"]::-moz-focus-inner,
+input[type="reset"]::-moz-focus-inner,
+input[type="submit"]::-moz-focus-inner,
+.button::-moz-focus-inner {
+  padding: 0;
+  border: none;
+}
+button:-moz-focusring,
+html input[type="button"]:-moz-focusring,
+input[type="reset"]:-moz-focusring,
+input[type="submit"]:-moz-focusring,
+.button:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+button:hover, button:focus, button:active,
+html input[type="button"]:hover,
+html input[type="button"]:focus,
+html input[type="button"]:active,
+input[type="reset"]:hover,
+input[type="reset"]:focus,
+input[type="reset"]:active,
+input[type="submit"]:hover,
+input[type="submit"]:focus,
+input[type="submit"]:active,
+.button:hover,
+.button:focus,
+.button:active {
+  text-decoration: none;
+}
+button[disabled],
+html input[type="button"][disabled],
+input[type="reset"][disabled],
+input[type="submit"][disabled],
+.button[disabled] {
+  cursor: default;
+}
+
+[disabled] {
+  cursor: default;
+  opacity: 0.5;
+}
+
+button {
+  font: inherit;
+  -webkit-font-smoothing: inherit;
+  letter-spacing: inherit;
+  background: none;
+  border: none;
+}
+
+fieldset {
+  min-width: 0;
+  padding: 0.01rem 0 0;
+}
+
+body:not(:-moz-handler-blocked) fieldset {
+  display: table-cell;
+}
+
+legend {
+  display: table;
+  max-width: 100%;
+  margin-left: -0.3125rem;
+  padding: 0 0.3125rem;
+  border: none;
+  color: inherit;
+  white-space: normal;
+}
+
+progress {
+  vertical-align: baseline;
+}
+
+textarea {
+  overflow: auto;
+  vertical-align: top;
+}
+
+::-webkit-inner-spin-button,
+::-webkit-outer-spin-button {
+  height: auto;
+}
+
+[type="search"] {
+  -webkit-appearance: textfield;
+  outline-offset: -2px;
+}
+
+::-webkit-file-upload-button {
+  -webkit-appearance: button;
+  font: inherit;
+}
+
+article,
+aside,
+footer,
+header,
+nav,
+section,
+figcaption,
+figure,
+main,
+details,
+menu {
+  display: block;
+}
+
+summary {
+  display: list-item;
+}
+
+template, [hidden] {
+  display: none;
+}
+
+table {
+  width: 100%;
+  margin: 1.125rem 0;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+dfn,
+cite,
+em {
+  font-style: italic;
+}
+
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+iframe {
+  border: none;
+}
+
+optgroup {
+  font-weight: 700;
+}
+
+mark {
+  background-color: #ff0;
+  color: #000;
+}
+
+audio,
+video,
+progress,
+canvas {
+  display: inline-block;
+  /* vertical-align: baseline; */
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  padding: 0;
+}
+
+/*# sourceMappingURL=vitals.css.map */
