@@ -1,5 +1,5 @@
 {
-  "name": "vitals",
+  "name": "vitals-scss",
   "version": "0.1.0",
   "description": "A minimalistic bundle of two CSS/Sass tools for building modern, flexible websites: a better normalize/reset and a semantic flexbox-based grid system.",
   "keywords": ["sass", "flexbox", "grid", "semantic", "css", "grid-layout", "layout", "modern", "vitals", "vitals-grid", "scss", "scss-library", "sass-library"],
