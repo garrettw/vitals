@@ -1,0 +1,5 @@
+{
+  "name": "vitals",
+  "description": "A minimalistic bundle of two tools for building modern, flexible websites: a better normalize/reset and a semantic flexbox-based grid system.",
+  "tags": ["reset", "normalize", "grid", "layout", "flexbox", "semantic"]
+}
