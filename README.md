@@ -42,17 +42,15 @@ Any class you write for elements that are to be grid containers must begin with:
 ```scss
     @extend %vitals-grid;
 ```
-From there, you can use one or more of the following mixins to tweak it:
+From there, you can use the following mixins to tweak it:
 ```scss
-    @include vg-reverse; // reverses the flow of cells in the grid (like LTR -> RTL)
+    // reverses the flow of cells in the grid (like LTR -> RTL)
+    @include vg-reverse;
 
-    @include vg-align-left;   // aligns cells to the left of the container
-    @include vg-align-center; // aligns cells to the horizontal center of the container
-    @include vg-align-right;  // aligns cells to the right of the container
-
-    @include vg-valign-top;    // aligns cells to the top of the container
-    @include vg-valign-middle; // aligns cells to the vertical middle of the container
-    @include vg-valign-bottom; // aligns cells to the bottom of the container
+    // sets the vertical alignment of all cells within container
+    @include vg-valign-top;
+    @include vg-valign-middle;
+    @include vg-valign-bottom;
 ```
 
 Now that you have a container, let's make some cells to put in it.
@@ -73,7 +71,7 @@ Then, you can further tweak your cells using the following:
     @include vg-cell-border(size); // custom size, default color
     @include vg-cell-border(size, color); // custom size and color
 
-    // overrides the container's vertical alignment setting for this cell only
+    // overrides the vertical alignment setting for this cell only
     @include vg-cell-valign-top;
     @include vg-cell-valign-middle;
     @include vg-cell-valign-bottom;
@@ -106,6 +104,11 @@ class names that resembled Bootstrap.
 
 I figured surely it wouldn't take much to adapt Batch into something that would
 allow better semantics. So that's what I've done here.
+
+Then Neat 2.0 came out and introduced me to the concept of a push-left grid being
+better than the old half-gutter grid I had originally written for Vitals. Because
+Neat is still sticking to a float-based grid, I adapted the push-left concept to
+flexbox to make the current Vitals Grid system.
 
 You'll notice that there's no compiled version of the grid system.
 That's intentional; my entire purpose for making it was for it to be used with
