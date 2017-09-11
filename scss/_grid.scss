@@ -17,7 +17,30 @@ $vg-border-color: #666 !default;
 // Grid modifiers
 @mixin vg-reverse {
 	flex-direction: row-reverse;
-	justify-content: flex-end;
+}
+
+@mixin vg-align-left {
+  justify-content: flex-start;
+}
+
+@mixin vg-align-center {
+  justify-content: center;
+}
+
+@mixin vg-align-right {
+  justify-content: flex-end;
+}
+
+@mixin vg-align-justify {
+  justify-content: space-between;
+}
+
+@mixin vg-align-equalmargins {
+  justify-content: space-around;
+}
+
+@mixin vg-align-distribute {
+  justify-content: space-evenly;
 }
 
 @mixin vg-valign-top {

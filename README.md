@@ -48,7 +48,16 @@ Any class you write for elements that are to be grid containers must begin with:
 From there, you can use the following mixins to tweak it:
 ```scss
     // reverses the flow of cells in the grid (like LTR -> RTL)
+    // NOTE: this also reverses the effects of vg-align-left and vg-align-right!
     @include vg-reverse;
+
+    // sets the horizontal alignment of all cells within container
+    @include vg-align-left;
+    @include vg-align-center;
+    @include vg-align-right;
+    @include vg-align-justify; // equal space between, none on l/r edge
+    @include vg-align-equalmargins; // space on edge will be 1/2 of space between
+    @include vg-align-distribute; // same spacing on edge and between
 
     // sets the vertical alignment of all cells within container
     @include vg-valign-top;
