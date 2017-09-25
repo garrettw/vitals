@@ -41,9 +41,15 @@ However, it also includes a few constants you can use in your own code:
 
 ### How to use Vitals Grid
 
-Any class you write for elements that are to be grid containers must begin with:
+Vitals Grid allows you to set your own defaults for the mixins below to use.
+
+**Before** importing Vitals into your SCSS code, you may set your own default value
+for the following variable if you like.
+- `$vg-gutter` - default is 0.625rem (10px in a typical browser). Used by `@vg-cell`.
+
+Now you're ready to create a grid container. Make a new class for your container and start it with this:
 ```scss
-    @extend %vitals-grid;
+    @include vitals-grid;
 ```
 From there, you can use the following mixins to tweak it:
 ```scss
@@ -55,9 +61,9 @@ From there, you can use the following mixins to tweak it:
     @include vg-align-left;
     @include vg-align-center;
     @include vg-align-right;
-    @include vg-align-justify; // equal space between, none on l/r edge
+    @include vg-align-justify;      // equal space between, none on l/r edge
     @include vg-align-equalmargins; // space on edge will be 1/2 of space between
-    @include vg-align-distribute; // same spacing on edge and between
+    @include vg-align-distribute;   // same spacing on edge and between
 
     // sets the vertical alignment of all cells within container
     @include vg-valign-top;
@@ -79,23 +85,11 @@ Put ONE of these in your cell classes:
 ```
 Then, you can further tweak your cells using the following:
 ```scss
-    @include vg-cell-border; // adds border on all sides of default color and width
-    @include vg-cell-border(size); // custom size, default color
-    @include vg-cell-border(size, color); // custom size and color
-
     // overrides the vertical alignment setting for this cell only
     @include vg-cell-valign-top;
     @include vg-cell-valign-middle;
     @include vg-cell-valign-bottom;
 ```
-
-Vitals Grid allows you to set your own defaults for the above mixins to use.
-
-**Before** importing Vitals into your SCSS code, you may set the following variables
-to meet your needs.
-- `$vg-gutter` - default is 0.625rem (10px in a typical browser). Used in `@vg-cell`.
-- `$vg-border-width` - default is 0.0625rem (1px in a typical browser). Used in `@vg-cell-border`.
-- `$vg-border-color` - default is #666 (gray). Used in `@vg-cell-border`.
 
 ## About the grid layout system
 

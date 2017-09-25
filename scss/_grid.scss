@@ -1,14 +1,8 @@
 // Cell Gutter
 $vg-gutter: $stdhgap/2 !default;
 
-// Cell Border
-$vg-border-width: 0.0625rem !default;
-
-// Cell Border Color
-$vg-border-color: #666 !default;
-
 // Grid wrapper
-%vitals-grid {
+@mixin vitals-grid {
 	display: flex;
 	flex-flow: row wrap;
 	align-items: stretch;
@@ -64,10 +58,6 @@ $vg-border-color: #666 !default;
 	flex: 0 1 auto;
 	margin-left: $gutter;
 	width: calc(#{percentage($fraction)} - #{vg-cell-gutter($gutter, $fraction)});
-}
-
-@mixin vg-cell-border($width: $vg-border-width, $color: $vg-border-color) {
-	border: $width solid $color;
 }
 
 @mixin vg-cell-valign-top {
