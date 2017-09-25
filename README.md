@@ -1,7 +1,7 @@
 # ![Vitals](https://raw.githubusercontent.com/garrettw/vitals/master/vitals-logo-b.png)
 
-[![GitHub tag](https://img.shields.io/github/tag/garrettw/vitals.svg?style=flat-square)](https://github.com/garrettw/vitals/tags) [![Github All Releases](https://img.shields.io/github/downloads/garrettw/vitals/total.svg?style=flat-square)]()
-[![npm version](https://img.shields.io/npm/v/vitals-scss.svg?style=flat-square)]() [![npm downloads](https://img.shields.io/npm/dt/vitals-scss.svg?style=flat-square)]()
+[![GitHub tag](https://img.shields.io/github/tag/garrettw/vitals.svg?style=flat-square)](https://github.com/garrettw/vitals/tags) [![Github All Releases](https://img.shields.io/github/downloads/garrettw/vitals/total.svg?style=flat-square)](#)
+[![npm version](https://img.shields.io/npm/v/vitals-scss.svg?style=flat-square)](https://www.npmjs.com/package/vitals-scss) [![npm downloads](https://img.shields.io/npm/dt/vitals-scss.svg?style=flat-square)](https://yarnpkg.com/en/package/vitals-scss)
 
 Vitals is simply a bundle of two Sass tools for building modern, flexible websites: a normalize/reset and a
 flexbox-based grid layout system.
