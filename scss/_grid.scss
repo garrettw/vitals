@@ -3,14 +3,14 @@ $vg-gutter: $stdhgap/2 !default;
 
 // Grid wrapper
 @mixin vitals-grid {
-	display: flex;
-	flex-flow: row wrap;
-	align-items: stretch;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: stretch;
 }
 
 // Grid modifiers
 @mixin vg-reverse {
-	flex-direction: row-reverse;
+  flex-direction: row-reverse;
 }
 
 @mixin vg-align-left {
@@ -38,15 +38,15 @@ $vg-gutter: $stdhgap/2 !default;
 }
 
 @mixin vg-valign-top {
-	align-items: flex-start;
+  align-items: flex-start;
 }
 
 @mixin vg-valign-middle {
-	align-items: center;
+  align-items: center;
 }
 
 @mixin vg-valign-bottom {
-	align-items: flex-end;
+  align-items: flex-end;
 }
 
 // Cell setup/modifiers
@@ -55,19 +55,19 @@ $vg-gutter: $stdhgap/2 !default;
 }
 
 @mixin vg-cell($fraction, $gutter: $vg-gutter) {
-	flex: 0 1 auto;
-	margin-left: $gutter;
-	width: calc(#{percentage($fraction)} - #{vg-cell-gutter($gutter, $fraction)});
+  flex: 0 1 auto;
+  margin-left: $gutter;
+  width: calc(#{percentage($fraction)} - #{vg-cell-gutter($gutter, $fraction)});
 }
 
 @mixin vg-cell-valign-top {
-	align-self: flex-start;
+  align-self: flex-start;
 }
 
 @mixin vg-cell-valign-middle {
-	align-self: center;
+  align-self: center;
 }
 
 @mixin vg-cell-valign-bottom {
-	align-self: flex-end;
+  align-self: flex-end;
 }

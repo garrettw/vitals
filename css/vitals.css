@@ -23,12 +23,12 @@ h3,
 h4,
 h5,
 h6,
+blockquote,
+figure,
 p,
 ol,
 ul,
-li,
-blockquote,
-figure {
+li {
   margin: 0;
   padding: 0;
   font-size: inherit;
@@ -240,15 +240,15 @@ textarea {
 
 article,
 aside,
-footer,
-header,
-nav,
-section,
+details,
 figcaption,
 figure,
+footer,
+header,
 main,
-details,
-menu {
+menu,
+nav,
+section {
   display: block;
 }
 
@@ -267,8 +267,8 @@ table {
   border-spacing: 0;
 }
 
-dfn,
 cite,
+dfn,
 em {
   font-style: italic;
 }
@@ -292,9 +292,9 @@ mark {
 }
 
 audio,
+canvas,
 video,
-progress,
-canvas {
+progress {
   display: inline-block;
   /* vertical-align: baseline; */
 }
