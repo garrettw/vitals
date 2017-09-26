@@ -128,8 +128,8 @@ their goals, such as:
 - [Bourbon/Bitters/Refills](http://bourbon.io/)
 - [Breakpoint](http://breakpoint-sass.com/)
 - [Typey](https://github.com/jptaranto/typey)
-- [Chroma](https://github.com/JohnAlbin/chroma)
-- [ColorMeSass](https://github.com/RichardBray/color-me-sass)
-- [Color Schemer](https://github.com/at-import/color-schemer)
+- [Chroma](https://github.com/JohnAlbin/chroma) (for managing color schemes)
+- [ColorMeSass](https://github.com/RichardBray/color-me-sass) (tons of color values)
+- [Color Schemer](https://github.com/at-import/color-schemer) (manipulates colors)
 
 I'll add to this list as I find other useful Sass projects.
