@@ -34,7 +34,7 @@ $vg-gutter: $stdhgap/2 !default;
 }
 
 @mixin vg-align-distribute {
-  justify-content: space-evenly;
+  justify-content: space-evenly; // currently only implemented in Firefox!
 }
 
 @mixin vg-valign-top {

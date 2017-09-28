@@ -63,7 +63,6 @@ From there, you can use the following mixins to tweak it:
     @include vg-align-right;
     @include vg-align-justify;      // equal space between, none on l/r edge
     @include vg-align-equalmargins; // space on edge will be 1/2 of space between
-    @include vg-align-distribute;   // same spacing on edge and between
 
     // sets the vertical alignment of all cells within container
     @include vg-valign-top;
