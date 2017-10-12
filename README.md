@@ -49,7 +49,7 @@ for the following variable if you like.
 
 Now you're ready to create a grid container. Make a new class for your container and start it with this:
 ```scss
-    @include vitals-grid;
+    @include vg-row;
 ```
 From there, you can use the following mixins to tweak it:
 ```scss
@@ -82,6 +82,9 @@ Put ONE of these in your cell classes:
     // creates a cell 1/4 of the container's width including no gutter
     @include vg-cell(1/4, 0);
 ```
+**NOTE:** if your container uses `vg-reverse`, your cells need to use
+`vg-cell-reverse` instead of `vg-cell`.
+
 Then, you can further tweak your cells using the following:
 ```scss
     // overrides the vertical alignment setting for this cell only
@@ -126,9 +129,25 @@ Yes, for now. I think there are some existing projects that adequately address
 their goals, such as:
 - [Bourbon/Bitters/Refills](http://bourbon.io/)
 - [Breakpoint](http://breakpoint-sass.com/)
-- [Typey](https://github.com/jptaranto/typey)
+- [Typey](https://github.com/jptaranto/typey) (for managing font schemes)
+- [Typi](https://github.com/zellwk/typi) (handles typesetting responsively)
+- [Modular Scale](https://github.com/modularscale/modularscale-sass)
 - [Chroma](https://github.com/JohnAlbin/chroma) (for managing color schemes)
 - [ColorMeSass](https://github.com/RichardBray/color-me-sass) (tons of color values)
 - [Color Schemer](https://github.com/at-import/color-schemer) (manipulates colors)
 
 I'll add to this list as I find other useful Sass projects.
+
+### A word about Modular Scale
+If you use the Modular Scale library, I've found that the following configuration
+gives some nice round increments at multiples of 3.
+```scss
+$modularscale: (
+  base: 1em,
+  ratio: 1.25992
+);
+```
+Using this, `ms(0)` = 1em, `ms(3)` = 2em, `ms(6)` = 4em, `ms(9)` = 8em, and so on.
+
+I didn't include this in Vitals (even though I could) because I think doing so
+would be a bit too heavy-handed.

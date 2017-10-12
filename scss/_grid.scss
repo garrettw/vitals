@@ -1,8 +1,10 @@
+$stdhgap: 1.25rem !default; // in case this file is used by itself
+
 // Cell Gutter
 $vg-gutter: $stdhgap/2 !default;
 
 // Grid wrapper
-@mixin vitals-grid {
+@mixin vg-row {
   display: flex;
   flex-flow: row wrap;
   align-items: stretch;
@@ -57,6 +59,12 @@ $vg-gutter: $stdhgap/2 !default;
 @mixin vg-cell($fraction, $gutter: $vg-gutter) {
   flex: 0 1 auto;
   margin-left: $gutter;
+  width: calc(#{percentage($fraction)} - #{vg-cell-gutter($gutter, $fraction)});
+}
+
+@mixin vg-cell-reverse($fraction, $gutter: $vg-gutter) {
+  flex: 0 1 auto;
+  margin-right: $gutter;
   width: calc(#{percentage($fraction)} - #{vg-cell-gutter($gutter, $fraction)});
 }
 
