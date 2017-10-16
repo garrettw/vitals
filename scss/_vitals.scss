@@ -1,5 +1,5 @@
 ////////////////////////////////////////////////////////////
-//	Vitals v0.2.1
+//	Vitals v0.3.0
 //
 //	Thanks to the following projects and
 //	their authors for influencing this:
@@ -10,8 +10,8 @@
 //	- Twenty Sixteen by WordPress
 ////////////////////////////////////////////////////////////
 
-$stdvgap: 1.125rem;
-$stdhgap: 1.25rem;
+$stdvgap: 1.125rem; // 18px
+$stdhgap: 1.25rem;  // 20px
 
 @import "grid";
 

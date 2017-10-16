@@ -3,7 +3,7 @@
 [![GitHub tag](https://img.shields.io/github/tag/garrettw/vitals.svg?style=flat-square)](https://github.com/garrettw/vitals/tags) [![Github All Releases](https://img.shields.io/github/downloads/garrettw/vitals/total.svg?style=flat-square)](#)
 [![npm version](https://img.shields.io/npm/v/vitals-scss.svg?style=flat-square)](https://www.npmjs.com/package/vitals-scss) [![npm downloads](https://img.shields.io/npm/dt/vitals-scss.svg?style=flat-square)](https://yarnpkg.com/en/package/vitals-scss)
 
-Vitals is simply a bundle of two Sass tools for building modern, flexible websites: a normalize/reset and a
+Vitals simply consists of two Sass tools for building modern, flexible websites: a normalize/reset and a
 flexbox-based grid layout system.
 
 Browser support:
@@ -30,68 +30,79 @@ library to create responsive grids.**
 ## How to use Vitals in your Sass project
 
 If you grab both `_vitals.scss` and `_grid.scss` and put them in the same directory
-as the main file you're working on, you can use:
+as the main file you're working on, you can just use this, which will pull in everything:
 ```scss
 @import "vitals";
 ```
-That's all you need in order to use the main part of Vitals.
-However, it also includes a few constants you can use in your own code:
-- `$stdvgap` is set to 1.125rem (18px in a typical browser). This controls the vertical rhythm.
-- `$stdhgap` is set to 1.25rem (20px in a typical browser). This is currently used only with blockquote and legend elements to calculate reasonable horizontal margins.
+
+Or, if you only want to use the grid system and not the normalize, you can use
+`_grid.scss` by itself.
+```scss
+@import "grid";
+```
 
 ### How to use Vitals Grid
 
-Vitals Grid allows you to set your own defaults for the mixins below to use.
-
-**Before** importing Vitals into your SCSS code, you may set your own default value
-for the following variable if you like.
-- `$vg-gutter` - default is 0.625rem (10px in a typical browser). Used by `@vg-cell`.
-
-Now you're ready to create a grid container. Make a new class for your container and start it with this:
+To start off, create a CSS class for a grid row container - something like this:
 ```scss
-    @include vg-row;
+.page {
+  @include vg-row;
+}
 ```
-From there, you can use the following mixins to tweak it:
+If you want, you can add any of the following mixins to that class to tweak it:
 ```scss
-    // reverses the flow of cells in the grid (like LTR -> RTL)
-    // NOTE: this also reverses the effects of vg-align-left and vg-align-right!
-    @include vg-reverse;
+  // reverses the flow of cells in the row (like LTR -> RTL)
+  // NOTE: this also reverses the effects of vg-align-left and vg-align-right!
+  @include vg-reverse;
 
-    // sets the horizontal alignment of all cells within container
-    @include vg-align-left;
-    @include vg-align-center;
-    @include vg-align-right;
-    @include vg-align-justify;      // equal space between, none on l/r edge
-    @include vg-align-equalmargins; // space on edge will be 1/2 of space between
+  // sets the horizontal alignment of all cells within row
+  @include vg-align-left;
+  @include vg-align-center;
+  @include vg-align-right;
+  @include vg-align-justify;      // equal space between, none on l/r edge
+  @include vg-align-equalmargins; // space on edge will be 1/2 of space between
 
-    // sets the vertical alignment of all cells within container
-    @include vg-valign-top;
-    @include vg-valign-middle;
-    @include vg-valign-bottom;
+  // sets the vertical alignment of all cells within row
+  @include vg-valign-top;
+  @include vg-valign-middle;
+  @include vg-valign-bottom;
 ```
 
-Now that you have a container, let's make some cells to put in it.
-Put ONE of these in your cell classes:
+Now that you have a row container, here's the signature of the cell mixin.
 ```scss
-    // creates a cell 1/3 of the container's width including a gutter of the default size
-    @include vg-cell(1/3);
+  @mixin vg-cell($fraction[, $gutter: 0.625rem]);
 
-    // creates a cell 2/3 of the container's width including a custom gutter size of 1rem
-    @include vg-cell(2/3, 1rem);
-
-    // creates a cell 1/4 of the container's width including no gutter
-    @include vg-cell(1/4, 0);
+  // ONLY for cells inside containers that use vg-reverse
+  @mixin vg-cell-reverse($fraction[, $gutter: 0.625rem]);
 ```
-**NOTE:** if your container uses `vg-reverse`, your cells need to use
-`vg-cell-reverse` instead of `vg-cell`.
+The first parameter is a fraction that specifies the width of the cell, and the
+second (optional) parameter sets a custom gutter size between the cells (default
+is 0.625rem, or 10px).
 
-Then, you can further tweak your cells using the following:
+So, let's make some cells to put in the row. I think I'll have a left and
+a right sidebar (both the same size) with a content area in the middle, and I'll
+just use the default gutter.
 ```scss
-    // overrides the vertical alignment setting for this cell only
-    @include vg-cell-valign-top;
-    @include vg-cell-valign-middle;
-    @include vg-cell-valign-bottom;
+.sidebar {
+  @include vg-cell(1/4);
+}
+
+.content {
+  @include vg-cell(1/2);
+}
 ```
+I want all of my cells to match the height of the tallest one, so
+I won't need any of the following. But if you don't want that behavior, you can
+have them vertically aligned however you want, and you can change this behavior
+at the cell or even container level (see above).
+```scss
+  // overrides the vertical alignment setting for this cell only
+  @include vg-cell-valign-top;
+  @include vg-cell-valign-middle;
+  @include vg-cell-valign-bottom;
+```
+
+It's that simple!
 
 ## About the grid layout system
 
