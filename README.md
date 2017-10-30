@@ -49,7 +49,7 @@ To start off, create a CSS class for a grid row container - something like this:
   @include vg-row;
 }
 ```
-If you want, you can add any of the following mixins to that class to tweak it:
+If you want, you can then add any of the following to that class to tweak it:
 ```scss
   // reverses the flow of cells in the row (like LTR -> RTL)
   // NOTE: this also reverses the effects of vg-align-left and vg-align-right!
@@ -100,6 +100,26 @@ at the cell or even container level (see above).
   @include vg-cell-valign-top;
   @include vg-cell-valign-middle;
   @include vg-cell-valign-bottom;
+```
+
+#### How to make cells responsive
+
+To use Vitals Grid in a responsive manner, just redefine your `@vg-cell`s
+with a different size inside of media queries.
+This works because any cell that exceeds 100% of a row's width will be wrapped
+automatically – creating a column without setting `flex-direction: column`
+(which would come with its own set of caveats). And it's better than a flex
+column because this way you can still have multiple cells on one row if you want.
+
+Here's a primitive example using the sidebar class from above.
+```scss
+.sidebar {
+  @include vg-cell(1); // full width by default, for mobile-first design
+
+  @media screen and (min-width: 48em) {
+    @include vg-cell(1/4); // 25% wide at desktop resolution
+  }
+}
 ```
 
 It's that simple!

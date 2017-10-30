@@ -52,20 +52,24 @@ $vg-gutter: $stdhgap/2 !default;
 }
 
 // Cell setup/modifiers
-@function vg-cell-gutter($gutter, $fraction) {
+@function _vg-cell-gutter($gutter, $fraction) {
   @return $gutter + ($gutter * $fraction);
 }
 
-@mixin vg-cell($fraction, $gutter: $vg-gutter) {
+@mixin _vg-cell-common($fraction, $gutter) {
   flex: 0 1 auto;
+  margin-bottom: $gutter;
+  width: calc(#{percentage($fraction)} - #{_vg-cell-gutter($gutter, $fraction)});
+}
+
+@mixin vg-cell($fraction, $gutter: $vg-gutter) {
+  @include _vg-cell-common($fraction, $gutter);
   margin-left: $gutter;
-  width: calc(#{percentage($fraction)} - #{vg-cell-gutter($gutter, $fraction)});
 }
 
 @mixin vg-cell-reverse($fraction, $gutter: $vg-gutter) {
-  flex: 0 1 auto;
+  @include _vg-cell-common($fraction, $gutter);
   margin-right: $gutter;
-  width: calc(#{percentage($fraction)} - #{vg-cell-gutter($gutter, $fraction)});
 }
 
 @mixin vg-cell-valign-top {
