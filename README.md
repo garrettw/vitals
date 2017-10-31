@@ -24,8 +24,8 @@ in use. For example, older versions of IE (like 6-8) are intentionally not
 supported. Very few people use those versions, and if support for them is needed,
 I'm not interested in tackling that as it involves a lot of extra work for not much benefit.
 
-**I highly recommend combining Vitals Grid with the excellent [Breakpoint](https://github.com/at-import/breakpoint)
-library to create responsive grids.**
+**I highly recommend combining Vitals Grid with the excellent [sass-mq fork](https://github.com/mcaskill/sass-mq)
+media query library to create responsive grids.**
 
 ## How to use Vitals in your Sass project
 
@@ -111,12 +111,13 @@ automatically – creating a column without setting `flex-direction: column`
 (which would come with its own set of caveats). And it's better than a flex
 column because this way you can still have multiple cells on one row if you want.
 
-Here's a primitive example using the sidebar class from above.
+Here's a primitive example using the sidebar class and media query library I
+recommended above.
 ```scss
 .sidebar {
   @include vg-cell(1); // full width by default, for mobile-first design
 
-  @media screen and (min-width: 48em) {
+  @include mq(768px) {
     @include vg-cell(1/4); // 25% wide at desktop resolution
   }
 }
@@ -159,7 +160,7 @@ with pure CSS. So if you want a pure CSS flexbox grid system, check out [Batch](
 Yes, for now. I think there are some existing projects that adequately address
 their goals, such as:
 - [Bourbon/Bitters/Refills](http://bourbon.io/)
-- [Breakpoint](http://breakpoint-sass.com/)
+- [mcaskill's sass-mq fork](https://github.com/mcaskill/sass-mq) (media queries)
 - [Typey](https://github.com/jptaranto/typey) (for managing font schemes)
 - [Typi](https://github.com/zellwk/typi) (handles typesetting with breakpoints)
 - [RFS](https://github.com/MartijnCuppens/rfs) (fluid - Responsive Font Size)
