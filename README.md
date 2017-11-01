@@ -3,8 +3,9 @@
 [![GitHub tag](https://img.shields.io/github/tag/garrettw/vitals.svg?style=flat-square)](https://github.com/garrettw/vitals/tags) [![Github All Releases](https://img.shields.io/github/downloads/garrettw/vitals/total.svg?style=flat-square)](#)
 [![npm version](https://img.shields.io/npm/v/vitals-scss.svg?style=flat-square)](https://www.npmjs.com/package/vitals-scss) [![npm downloads](https://img.shields.io/npm/dt/vitals-scss.svg?style=flat-square)](https://yarnpkg.com/en/package/vitals-scss)
 
-Vitals simply consists of two Sass tools for building modern, flexible websites: a normalize/reset and a
-flexbox-based grid layout system.
+Vitals simply consists of three Sass tools for building modern, flexible websites:
+an improved normalize (also available in pure CSS), a flexbox-based grid layout
+system, and a fluid sizing function.
 
 Browser support:
 - IE 11
@@ -16,28 +17,25 @@ Browser support:
 - Chrome for Android
 - Firefox for Android
 
-The normalize/reset is my own (smaller) spin on Normalize.css, and it is also
-available in pure CSS.
-
 The goal is to be compatible with the most common browsers and versions currently
 in use. For example, older versions of IE (like 6-8) are intentionally not
 supported. Very few people use those versions, and if support for them is needed,
 I'm not interested in tackling that as it involves a lot of extra work for not much benefit.
 
-**I highly recommend combining Vitals Grid with the excellent [sass-mq fork](https://github.com/mcaskill/sass-mq)
-media query library to create responsive grids.**
+**I highly recommend combining Vitals with the excellent [MQ+](https://github.com/mcaskill/sass-mq)
+media query library to create responsive grids and font sizes.**
 
 ## How to use Vitals in your Sass project
 
-If you grab both `_vitals.scss` and `_grid.scss` and put them in the same directory
-as the main file you're working on, you can just use this, which will pull in everything:
+If you grab everything in the `scss` directory and put it in the same directory
+as the file you're working on, you can just use this, which will pull in everything:
 ```scss
 @import "vitals";
 ```
 
-Or, if you only want to use the grid system and not the normalize, you can use
-`_grid.scss` by itself.
+Or you can import the other components individually:
 ```scss
+@import "fluid";
 @import "grid";
 ```
 
@@ -117,13 +115,50 @@ recommended above.
 .sidebar {
   @include vg-cell(1); // full width by default, for mobile-first design
 
-  @include mq(768px) {
+  @include mq(48em) {
     @include vg-cell(1/4); // 25% wide at desktop resolution
   }
 }
 ```
 
 It's that simple!
+
+### How to use Vitals Fluid
+
+Fluid is a function you can use that will output a flexible dimension that
+scales along with the viewport width for use with any property (most
+commonly `font-size`).
+
+Here's the signature for the function.
+```scss
+@function v-fluid($sm, $lg, $narrow, $wide);
+```
+`$sm` is the size to be used when the viewport is at `$narrow` width, and `$lg`
+is the size at `$wide` width.
+
+This function outputs a `calc()` string that scales the size linearly from `$sm`
+to `$lg` for the viewport range of `$narrow` to `$wide`.
+
+**Be sure to use this INSIDE a media query, because unexpected behavior may
+result if the viewport is not within the range of `$narrow` to `$wide`.**
+
+Here's an example using MQ+.
+```scss
+body {
+  // the smallest font size, for mobile first
+  font-size: 1rem;
+
+  @include mq(45em, 60em) {
+    // the intermediate size, which scales smoothly
+    font-size: v-fluid(1rem, 1.5rem, 45em, 60em);
+  }
+
+  @include mq(60em) {
+    // the largest size
+    font-size: 1.5rem;
+  }
+}
+```
 
 ## About the grid layout system
 
@@ -160,10 +195,8 @@ with pure CSS. So if you want a pure CSS flexbox grid system, check out [Batch](
 Yes, for now. I think there are some existing projects that adequately address
 their goals, such as:
 - [Bourbon](http://bourbon.io/)
-- [mcaskill's sass-mq fork](https://github.com/mcaskill/sass-mq) (media queries)
+- [MQ+](https://github.com/mcaskill/sass-mq) (media queries)
 - [Typey](https://github.com/jptaranto/typey) (for managing font schemes)
-- [Typi](https://github.com/zellwk/typi) (handles typesetting with breakpoints)
-- [RFS](https://github.com/MartijnCuppens/rfs) (fluid - Responsive Font Size)
 - [Modular Scale](https://github.com/modularscale/modularscale-sass)
 - [Chroma](https://github.com/JohnAlbin/chroma) (for managing color schemes)
 - [ColorMeSass](https://github.com/RichardBray/color-me-sass) (tons of color values)
@@ -171,16 +204,17 @@ their goals, such as:
 
 I'll add to this list as I find other useful Sass projects.
 
-### A word about Modular Scale
+## Tips
+### Modular Scale
 If you use the Modular Scale library, I've found that the following configuration
 gives some nice round increments at multiples of 3.
 ```scss
 $modularscale: (
-  base: 1em,
+  base: 1rem,
   ratio: 1.25992
 );
 ```
-Using this, `ms(0)` = 1em, `ms(3)` = 2em, `ms(6)` = 4em, `ms(9)` = 8em, and so on.
+Using this, `ms(0)` = 1rem, `ms(3)` = 2rem, `ms(6)` = 4rem, `ms(9)` = 8rem, and so on.
 
-I didn't include this in Vitals (even though I could) because I think doing so
-would be a bit too heavy-handed.
+I've included this in `_defaults.scss` which you **must** import explicitly if
+you want to use it, as it is optional.

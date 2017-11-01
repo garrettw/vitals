@@ -1,0 +1,8 @@
+@function v-fluid($sm, $lg, $narrow, $wide) {
+  @return calc(
+    (100vw - #{$narrow})
+    / #{$wide - $narrow}
+    * #{$lg - $sm}
+    + #{$sm}
+  );
+}
