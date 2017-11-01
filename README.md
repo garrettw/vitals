@@ -3,6 +3,9 @@
 [![GitHub tag](https://img.shields.io/github/tag/garrettw/vitals.svg?style=flat-square)](https://github.com/garrettw/vitals/tags) [![Github All Releases](https://img.shields.io/github/downloads/garrettw/vitals/total.svg?style=flat-square)](#)
 [![npm version](https://img.shields.io/npm/v/vitals-scss.svg?style=flat-square)](https://www.npmjs.com/package/vitals-scss) [![npm downloads](https://img.shields.io/npm/dt/vitals-scss.svg?style=flat-square)](https://yarnpkg.com/en/package/vitals-scss)
 
+Vitals makes a great addition to your Sass toolkit. It happily exists alongside
+the other libraries you already use and even expects you to use them.
+
 Vitals simply consists of three Sass tools for building modern, flexible websites:
 an improved normalize (also available in pure CSS), a flexbox-based grid layout
 system, and a fluid sizing function.
@@ -27,13 +30,18 @@ media query library to create responsive grids and font sizes.**
 
 ## How to use Vitals in your Sass project
 
+_**Disclaimer:** I come from the world of PHP and have no experience with Ruby or Node,
+so I've never really used any of the usual tooling to install this kind of stuff.
+So naturally, I'm writing these instructions for someone like myself._
+
 If you grab everything in the `scss` directory and put it in the same directory
-as the file you're working on, you can just use this, which will pull in everything:
+as the file you're working on, you can just use this, which will pull in all the
+important stuff:
 ```scss
 @import "vitals";
 ```
 
-Or you can import the other components individually:
+Or you can import the other components individually, if you like:
 ```scss
 @import "fluid";
 @import "grid";
@@ -142,20 +150,20 @@ to `$lg` for the viewport range of `$narrow` to `$wide`.
 **Be sure to use this INSIDE a media query, because unexpected behavior may
 result if the viewport is not within the range of `$narrow` to `$wide`.**
 
-Here's an example using MQ+.
+Here's an example using Modular Scale and MQ+.
 ```scss
 body {
   // the smallest font size, for mobile first
-  font-size: 1rem;
+  font-size: ms(0);
 
   @include mq(45em, 60em) {
     // the intermediate size, which scales smoothly
-    font-size: v-fluid(1rem, 1.5rem, 45em, 60em);
+    font-size: v-fluid(ms(0), ms(1), 45em, 60em);
   }
 
   @include mq(60em) {
     // the largest size
-    font-size: 1.5rem;
+    font-size: ms(1);
   }
 }
 ```
