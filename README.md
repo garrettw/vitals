@@ -159,7 +159,7 @@ with pure CSS. So if you want a pure CSS flexbox grid system, check out [Batch](
 
 Yes, for now. I think there are some existing projects that adequately address
 their goals, such as:
-- [Bourbon/Bitters/Refills](http://bourbon.io/)
+- [Bourbon](http://bourbon.io/)
 - [mcaskill's sass-mq fork](https://github.com/mcaskill/sass-mq) (media queries)
 - [Typey](https://github.com/jptaranto/typey) (for managing font schemes)
 - [Typi](https://github.com/zellwk/typi) (handles typesetting with breakpoints)
