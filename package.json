@@ -1,7 +1,7 @@
 {
   "name": "vitals-scss",
-  "version": "0.3.0",
-  "description": "A minimalistic bundle of two CSS/Sass tools for building modern, flexible websites: a better normalize/reset and a semantic flexbox-based grid system.",
+  "version": "0.4.0",
+  "description": "A minimalistic bundle of three CSS/Sass tools for building modern, flexible websites: an improved normalize, a semantic flexbox-based grid system, and a fluid sizing function.",
   "keywords": [
     "sass",
     "flexbox",
@@ -15,7 +15,8 @@
     "vitals-grid",
     "scss",
     "scss-library",
-    "sass-library"
+    "sass-library",
+    "fluid"
   ],
   "main": "scss/_vitals.scss",
   "repository": {
