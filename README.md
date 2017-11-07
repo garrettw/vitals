@@ -133,11 +133,16 @@ It's that simple!
 
 ### How to use Vitals Fluid
 
-Fluid is a function you can use that will output a flexible dimension that
-scales along with the viewport width for use with any property (most
-commonly `font-size`).
+Fluid consists of two functions you can use that will each output a flexible
+dimension, which scales along with the viewport width, for use with any property
+(most commonly `font-size`).
 
-Here's the signature for the function.
+**If you use these OUTSIDE of a media query, the scaling will not stop at a
+minimum or maximum.**
+
+#### v-fluid()
+
+The original function scales based on a min and max size, and a min and max viewport.
 ```scss
 @function v-fluid($sm, $lg, $narrow, $wide);
 ```
@@ -147,9 +152,6 @@ is the size at `$wide` width.
 This function outputs a `calc()` string that scales the size linearly from `$sm`
 to `$lg` for the viewport range of `$narrow` to `$wide`.
 
-**Be sure to use this INSIDE a media query, because unexpected behavior may
-result if the viewport is not within the range of `$narrow` to `$wide`.**
-
 Here's an example using Modular Scale and MQ+.
 ```scss
 body {
@@ -158,7 +160,7 @@ body {
 
   @include mq(45em, 60em) {
     // the intermediate size, which scales smoothly
-    font-size: v-fluid(ms(0), ms(1), 45em, 60em);
+    font-size: v-fluid($sm: ms(0), $lg: ms(1), $narrow: 45em, $wide: 60em);
   }
 
   @include mq(60em) {
@@ -167,6 +169,34 @@ body {
   }
 }
 ```
+
+#### v-fluid-grow()
+
+This is an alternate function that is designed to scale up infinitely from a
+minimum size using a scaling factor rather than a max size and viewport.
+I created this based on the principle that screens have a practical limit on how
+small they can be, but no such limit on how large they can be.
+```scss
+@function v-fluid-grow($start, $from, $factor);
+```
+`$start` is the minimum size, `$from` is the viewport width where the minimum size is
+in effect, and `$factor` is a unitless number that determines how fast the size scales up.
+Larger `$factor` values scale slower.
+
+
+To achieve an equivalent result to the previous function, the code would look like this:
+```scss
+body {
+  // the smallest font size, for mobile first
+  font-size: ms(0);
+
+  @include mq(45em) {
+    // smooth scaling above the minimum viewport
+    font-size: v-fluid-grow($start: ms(0), $from: 45em, $factor: 60);
+  }
+}
+```
+
 
 ## About the grid layout system
 

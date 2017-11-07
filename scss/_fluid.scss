@@ -6,3 +6,11 @@
     + #{$sm}
   );
 }
+
+@function v-fluid-grow($start, $from, $factor) {
+  @return calc(
+    (100vw - #{$from})
+    / #{$factor}
+    + #{$start}
+  );
+}
