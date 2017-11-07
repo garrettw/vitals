@@ -177,16 +177,23 @@ minimum size using a scaling factor rather than a max size and viewport.
 I created this based on the principle that screens have a practical limit on how
 small they can be, but no such limit on how large they can be.
 ```scss
-@function v-fluid-grow($start, $factor[, $from: 37.5em]);
+@function v-fluid-grow($start[, $factor: 165[, $from: 37.5em]]);
 ```
-`$start` is the minimum size, `$factor` is a unitless number that determines how
+`$start` is the minimum size, `$factor` is an optional unitless number that determines how
 fast the size scales up (larger `$factor` values scale slower), and `$from` is
-the optional viewport width where the minimum size is in effect (default is
-37.5em, or 600px). You can change the default `$from` value by setting `$vf-min-vw`
-**before** importing Vitals into your project.
+the optional viewport width where the minimum size is in effect.
+
+The default `$factor` is 165 simply because, if you start at a font size of 1rem
+at the default viewport of 37.5em (600px), your font size will scale to exactly
+1.5rem at a viewport of 120em (1920px), which is what I think might look about right.
+
+You can change the default values for the last two parameters **before** importing
+Vitals into your project:
+- Change `$from` by setting `$vf-from`
+- Change `$factor` by setting `$vf-factor`
 
 
-To achieve an equivalent result to the previous function, the code would look like this:
+To achieve a result equivalent to the previous example, the code would look like this:
 ```scss
 body {
   // the smallest font size, for mobile first
