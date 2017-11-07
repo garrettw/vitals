@@ -7,7 +7,9 @@
   );
 }
 
-@function v-fluid-grow($start, $from, $factor) {
+$vf-min-vw: 37.5em !default;
+
+@function v-fluid-grow($start, $factor, $from: $vf-min-vw) {
   @return calc(
     (100vw - #{$from})
     / #{$factor}
