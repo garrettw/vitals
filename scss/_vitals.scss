@@ -128,8 +128,12 @@ svg {
   border: none;
 }
 
-svg:not(:root) {
+svg {
   overflow: hidden;
+}
+
+svg:root {
+  overflow: visible;
 }
 
 button,
