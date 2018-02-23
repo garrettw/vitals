@@ -1,8 +1,15 @@
+@function strip-unit($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+  @return $number;
+}
+
 @function v-fluid($sm, $lg, $narrow, $wide) {
   @return calc(
     (100vw - #{$narrow})
-    / #{$wide - $narrow}
-    * #{$lg - $sm}
+    / #{strip-unit($wide - $narrow)}
+    * #{strip-unit($lg - $sm)}
     + #{$sm}
   );
 }
