@@ -110,6 +110,12 @@ select {
   text-transform: none;
 }
 
+input:disabled,
+textarea:disabled {
+  color: #404040;
+  opacity: 0.8;
+}
+
 button,
 input[type="button"],
 input[type="reset"],
@@ -146,11 +152,16 @@ input[type="submit"]:focus,
 input[type="submit"]:active {
   text-decoration: none;
 }
-button[disabled],
-input[type="button"][disabled],
-input[type="reset"][disabled],
-input[type="submit"][disabled] {
+
+button:disabled,
+input[type="button"]:disabled,
+input[type="reset"]:disabled,
+input[type="submit"]:disabled,
+optgroup:disabled,
+select:disabled {
+  color: #808080;
   cursor: default;
+  opacity: 1;
 }
 
 fieldset {

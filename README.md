@@ -142,7 +142,7 @@ minimum or maximum.**
 
 #### v-fluid()
 
-The original function scales based on a min and max size, and a min and max viewport.
+This function scales based on a min and max size, and a min and max viewport.
 ```scss
 @function v-fluid($sm, $lg, $narrow, $wide);
 ```
@@ -166,42 +166,6 @@ body {
   @include mq(60em) {
     // the largest size
     font-size: ms(1);
-  }
-}
-```
-
-#### v-fluid-grow()
-
-This is an alternate function that is designed to scale up infinitely from a
-minimum size using a scaling factor rather than a max size and viewport.
-I created this based on the principle that screens have a practical limit on how
-small they can be, but no such limit on how large they can be.
-```scss
-@function v-fluid-grow($start[, $factor: 165[, $from: 37.5em]]);
-```
-`$start` is the minimum size, `$factor` is an optional unitless number that determines how
-fast the size scales up (larger `$factor` values scale slower), and `$from` is
-the optional viewport width where the minimum size is in effect.
-
-The default `$factor` is 165 simply because, if you start at a font size of 1rem
-at the default viewport of 37.5em (600px), your font size will scale to exactly
-1.5rem at a viewport of 120em (1920px), which is what I think might look about right.
-
-You can change the default values for the last two parameters **before** importing
-Vitals into your project:
-- Change `$from` by setting `$vf-from`
-- Change `$factor` by setting `$vf-factor`
-
-
-To achieve a result equivalent to the previous example, the code would look like this:
-```scss
-body {
-  // the smallest font size, for mobile first
-  font-size: ms(0);
-
-  @include mq(45em) {
-    // smooth scaling above the minimum viewport
-    font-size: v-fluid-grow($start: ms(0), $factor: 60, $from: 45em);
   }
 }
 ```

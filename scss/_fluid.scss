@@ -5,22 +5,42 @@
   @return $number;
 }
 
-@function v-fluid($sm, $lg, $narrow, $wide) {
+@function fluid-size($sm, $lg, $narrow, $wide) {
+  @if unitless($sm) {
+    $sm: $sm * 1px;
+  }
+
+  @if not (unitless($lg) or unit($sm) == unit($lg)) {
+    @error 'Element size units (first two parameters) do not match.';
+  }
+
+  @if unitless($narrow) {
+    @error '$narrow (third parameter) requires units to be specified.';
+  }
+
+  @if not (unitless($wide) or unit($narrow) == unit($wide)) {
+    @error 'Viewport width units (last two parameters) do not match.';
+  }
+
+  @if unit($narrow) == 'em' {
+    $narrow: strip-unit($narrow) * 1rem;
+    $wide: strip-unit($wide) * 1rem;
+  }
+
+  @if unit($narrow) == 'rem' and unit($sm) == 'px' {
+    $sm: rem($sm);
+    $lg: rem($lg);
+  }
+
+  @if unit($narrow) == 'px' and not (unit($sm) == 'px') {
+    $narrow: rem($narrow);
+    $wide: rem($wide);
+  }
+
   @return calc(
     (100vw - #{$narrow})
     / #{strip-unit($wide - $narrow)}
     * #{strip-unit($lg - $sm)}
     + #{$sm}
-  );
-}
-
-$vf-from: 37.5em !default;
-$vf-factor: 165 !default;
-
-@function v-fluid-grow($start, $factor: $vf-factor, $from: $vf-from) {
-  @return calc(
-    (100vw - #{$from})
-    / #{$factor}
-    + #{$start}
   );
 }

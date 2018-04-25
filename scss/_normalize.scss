@@ -140,6 +140,13 @@ select {
   text-transform: none;
 }
 
+// From https://github.com/h5bp/html5-boilerplate/pull/1403#issuecomment-25126183
+input:disabled,
+textarea:disabled {
+  color: #404040;
+  opacity: 0.8;
+}
+
 button,
 input[type="button"],
 input[type="reset"],
@@ -168,9 +175,18 @@ input[type="submit"] {
   &:active {
     text-decoration: none;
   }
+}
 
-  &[disabled] {
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"],
+optgroup,
+select {
+  &:disabled {
+    color: #808080;
     cursor: default;
+    opacity: 1;
   }
 }
 
