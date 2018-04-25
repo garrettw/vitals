@@ -5,7 +5,7 @@
   @return $number;
 }
 
-@function fluid-size($sm, $lg, $narrow, $wide) {
+@function v-fluid($sm, $lg, $narrow, $wide) {
   @if unitless($sm) {
     $sm: $sm * 1px;
   }
