@@ -1,7 +1,12 @@
 # ![Vitals](https://raw.githubusercontent.com/garrettw/vitals/master/vitals-logo-b.png)
 
-[![GitHub tag](https://img.shields.io/github/tag/garrettw/vitals.svg?style=flat-square)](https://github.com/garrettw/vitals/tags) [![Github All Releases](https://img.shields.io/github/downloads/garrettw/vitals/total.svg?style=flat-square)](#)
-[![npm version](https://img.shields.io/npm/v/vitals-scss.svg?style=flat-square)](https://www.npmjs.com/package/vitals-scss) [![npm downloads](https://img.shields.io/npm/dt/vitals-scss.svg?style=flat-square)](https://yarnpkg.com/en/package/vitals-scss)
+[![npm version](https://img.shields.io/npm/v/vitals-scss.svg?style=flat-square)](https://www.npmjs.com/package/vitals-scss)
+[![npm package size](https://img.shields.io/bundlephobia/min/vitals-scss.svg?style=flat-square)](https://www.npmjs.com/package/vitals-scss)
+[![npm total downloads](https://img.shields.io/npm/dt/vitals-scss.svg?style=flat-square)](https://www.npmjs.com/package/vitals-scss)
+[![npm weekly downloads](https://img.shields.io/npm/dw/vitals-scss.svg?style=flat-square)](https://www.npmjs.com/package/vitals-scss)
+[![npm monthly downloads](https://img.shields.io/npm/dm/vitals-scss.svg?style=flat-square)](https://www.npmjs.com/package/vitals-scss)
+
+**[Download Vitals using Yarn!](https://yarnpkg.com/en/package/vitals-scss)**
 
 Vitals makes a great addition to your Sass toolkit. It happily exists alongside
 the other libraries you already use and even expects you to use them.
@@ -133,16 +138,13 @@ It's that simple!
 
 ### How to use Vitals Fluid
 
-Fluid consists of two functions you can use that will each output a flexible
-dimension, which scales along with the viewport width, for use with any property
-(most commonly `font-size`).
+Fluid is a function that will output a flexible dimension, which scales along
+with the viewport width, for use with any property.
 
-**If you use these OUTSIDE of a media query, the scaling will not stop at a
+**If you use this OUTSIDE of a media query, the scaling will not stop at a
 minimum or maximum.**
 
-#### v-fluid()
-
-This function scales based on a min and max size, and a min and max viewport.
+This function takes a min and max size, and a min and max viewport.
 ```scss
 @function v-fluid($sm, $lg, $narrow, $wide);
 ```
