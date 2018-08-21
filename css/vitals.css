@@ -42,10 +42,6 @@ samp {
 
 /* Text-level semantics
    ========================================================================== */
-a {
-  background-color: transparent;
-}
-
 abbr[title] {
   border-bottom: none;
   text-decoration: underline;
@@ -79,12 +75,6 @@ sub {
 
 sup {
   top: -0.5em;
-}
-
-/* Embedded content
-   ========================================================================== */
-img {
-  border-style: none;
 }
 
 /* Forms
@@ -185,12 +175,6 @@ textarea {
   overflow: auto;
 }
 
-[type="checkbox"],
-[type="radio"] {
-  box-sizing: border-box;
-  padding: 0;
-}
-
 [type="number"]::-webkit-inner-spin-button,
 [type="number"]::-webkit-outer-spin-button {
   height: auto;
@@ -222,10 +206,6 @@ summary {
 /* Misc
    ========================================================================== */
 template {
-  display: none;
-}
-
-[hidden] {
   display: none;
 }
 
@@ -264,7 +244,7 @@ a {
 }
 
 a,
-a:active:not(.button) {
+a:not(.button):active {
   background-color: transparent;
 }
 

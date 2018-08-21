@@ -11,9 +11,9 @@
 Vitals makes a great addition to your Sass toolkit. It happily exists alongside
 the other libraries you already use and even expects you to use them.
 
-Vitals simply consists of three Sass tools for building modern, flexible websites:
-an improved normalize (also available in pure CSS), a flexbox-based grid layout
-system, and a fluid sizing function.
+Vitals consists of a few simple Sass tools for building modern, flexible websites:
+an improved normalize (also available in pure CSS), a flexbox shorthand system,
+and a fluid sizing function.
 
 Browser support:
 - IE 11
@@ -49,87 +49,115 @@ important stuff:
 Or you can import the other components individually, if you like:
 ```scss
 @import "fluid";
-@import "grid";
+@import "flex";
 ```
 
-### How to use Vitals Grid
+### Vitals Flex
 
-To start off, create a CSS class for a grid row container - something like this:
+I used to call this "Vitals Grid", but with a change in purpose I thought it was
+time to call it something else to avoid confusion with CSS Grid, especially if
+I decide to add some Grid functionality at some point.
+
+Flex is little more than a rewritten vocabulary for flexbox - one that makes more
+sense to me, hence I find it easier to remember. It's meant for people who are
+capable of making good use of flexbox already, but would like a more memorable way
+to write it.
+
+#### API Overview
+
+Container mixins:
 ```scss
-.page {
-  @include vg-row;
+// This is the most basic one that the others inherit from.
+// Its only advantage over "display: flex;" is that it adds "align-items: stretch"
+// for browser normalization.
+@include flex;
+
+// Each of these also work stand-alone.
+@include flex-row;
+@include flex-row-reverse;
+@include flex-col;
+@include flex-col-reverse;
+```
+
+Container modifiers:
+```scss
+// On a flex row, these align horizontally.
+  @mixin flex-align-start        { justify-content: flex-start;    }
+  @mixin flex-align-center       { justify-content: center;        }
+  @mixin flex-align-end          { justify-content: flex-end;      }
+  // Equal space between, none on l/r edge:
+  @mixin flex-align-justify      { justify-content: space-between; }
+  // Space on edge will be 1/2 of space between:
+  @mixin flex-align-equalmargins { justify-content: space-around;  }
+  // Space on edge will be equal to space between:
+  @mixin flex-align-equalspace   { justify-content: space-evenly;  }
+
+// On a flex row, these align vertically. I call them "xalign" because "x" indicates
+// alignment on the cross axis, thus making these suitably named for columns as well.
+  @mixin flex-xalign-start    { align-items: flex-start; }
+  @mixin flex-xalign-center   { align-items: center;     }
+  @mixin flex-xalign-end      { align-items: flex-end;   }
+  @mixin flex-xalign-baseline { align-items: baseline;   }
+  @mixin flex-xalign-stretch  { align-items: stretch;    }
+```
+
+Item modifiers:
+```scss
+@mixin item-xalign-start    { align-self: flex-start; }
+@mixin item-xalign-center   { align-self: center;     }
+@mixin item-xalign-end      { align-self: flex-end;   }
+@mixin item-xalign-baseline { align-self: baseline;   }
+@mixin item-xalign-stretch  { align-self: stretch;    }
+```
+
+#### Row Example
+To start off, set up a container:
+```scss
+.row {
+  @include flex-row;
 }
 ```
-If you want, you can then add any of the following to that class to tweak it:
+
+Now that you have a row container, let's make some flex items that are 25% wide
+with the default 10px gutter.
 ```scss
-  // reverses the flow of cells in the row (like LTR -> RTL)
-  // NOTE: this also reverses the effects of vg-align-left and vg-align-right!
-  @include vg-reverse;
-
-  // sets the horizontal alignment of all cells within row
-  @include vg-align-left;
-  @include vg-align-center;
-  @include vg-align-right;
-  @include vg-align-justify;      // equal space between, none on l/r edge
-  @include vg-align-equalmargins; // space on edge will be 1/2 of space between
-
-  // sets the vertical alignment of all cells within row
-  @include vg-valign-top;
-  @include vg-valign-middle;
-  @include vg-valign-bottom;
-```
-
-Now that you have a row container, here's the signature of the cell mixin.
-```scss
-  @mixin vg-cell($fraction[, $gutter: 0.625rem]);
-
-  // ONLY for cells inside containers that use vg-reverse
-  @mixin vg-cell-reverse($fraction[, $gutter: 0.625rem]);
-```
-The first parameter is a fraction that specifies the width of the cell, and the
-second (optional) parameter sets a custom gutter size between the cells (default
-is 0.625rem, or 10px).
-
-So, let's make some cells to put in the row. I think I'll have a left and
-a right sidebar (both the same size) with a content area in the middle, and I'll
-just use the default gutter.
-```scss
-.sidebar {
-  @include vg-cell(1/4);
-}
-
-.content {
-  @include vg-cell(1/2);
+.this-item-here {
+  @include flex-item;
+  width: item-size(1/4);
+  margin: 0 0 $item-gutter $item-gutter;
 }
 ```
-I want all of my cells to match the height of the tallest one, so
-I won't need any of the following. But if you don't want that behavior, you can
-have them vertically aligned however you want, and you can change this behavior
-at the cell or even container level (see above).
+What happened here?
+The `item-size()` function spits out a dimension that accounts for gutter width.
+For a standard push-left grid, you'll at least want to set `margin-left` to the
+gutter size. I also set `margin-bottom` so that vertical spacing is the same.
+`$item-gutter` is an included variable that is used by `item-size()` as the default
+gutter size if one isn't specified. It is set to `0.625rem`, which is usually `10px`.
+
+If you don't want a gutter, that's fine too.
 ```scss
-  // overrides the vertical alignment setting for this cell only
-  @include vg-cell-valign-top;
-  @include vg-cell-valign-middle;
-  @include vg-cell-valign-bottom;
+.this-other-item {
+  @include flex-item;
+  width: item-size(1/4, 0);
+}
 ```
 
 #### How to make cells responsive
 
-To use Vitals Grid in a responsive manner, just redefine your `@vg-cell`s
-with a different size inside of media queries.
-This works because any cell that exceeds 100% of a row's width will be wrapped
-automatically – creating a column without setting `flex-direction: column`
-(which would come with its own set of caveats). And it's better than a flex
-column because this way you can still have multiple cells on one row if you want.
+To use Vitals Grid in a responsive manner, just redefine your `item-size()`s
+in different media queries. This works because any item that exceeds 100% of a
+container's main axis will be wrapped automatically.
 
-Here's a primitive example using the sidebar class and media query library I
-recommended above.
+Here's a primitive example using a sidebar class and the MQ+ media query library
+I recommended above.
 ```scss
 .sidebar {
-  @include vg-cell(1); // full width by default, for mobile-first design
+  @include flex-item;
+  width: item-size(1); // full width by default, for mobile-first design
+  margin-left: $item-gutter;
 
   @include mq(48em) {
-    @include vg-cell(1/4); // 25% wide at desktop resolution
+    width: item-size(1/4); // 25% wide at desktop resolution
   }
 }
 ```

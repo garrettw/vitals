@@ -59,11 +59,6 @@ samp {
 /* Text-level semantics
    ========================================================================== */
 
-a {
-  // Remove gray background on active links - IE 10
-  background-color: transparent;
-}
-
 abbr[title] {
   // Remove the bottom border - Chrome 57-
   border-bottom: none;
@@ -102,14 +97,6 @@ sub {
 
 sup {
   top: -0.5em;
-}
-
-/* Embedded content
-   ========================================================================== */
-
-img {
-  // Remove the border on images inside links - IE 10
-  border-style: none;
 }
 
 /* Forms
@@ -213,16 +200,8 @@ progress {
 }
 
 textarea {
-  // Remove the default vertical scrollbar - IE 10+
+  // Remove the default vertical scrollbar - IE 11
   overflow: auto;
-}
-
-[type="checkbox"],
-[type="radio"] {
-  // Add the correct box sizing - IE 10
-  box-sizing: border-box;
-  // Remove padding - IE 10
-  padding: 0;
 }
 
 [type="number"]::-webkit-inner-spin-button,
@@ -252,7 +231,7 @@ textarea {
    ========================================================================== */
 
 details {
-  // Add the correct display - Edge, IE 10+, and Firefox
+  // Add the correct display - Edge, IE 11, and Firefox
   display: block;
 }
 
@@ -265,12 +244,7 @@ summary {
    ========================================================================== */
 
 template {
-  // Add the correct display - IE 10+
-  display: none;
-}
-
-[hidden] {
-  // Add the correct display - IE 10
+  // Add the correct display - IE 11
   display: none;
 }
 
@@ -316,7 +290,7 @@ a {
 }
 
 a,
-a:active:not(.button) {
+a:not(.button):active {
   background-color: transparent;
 }
 
