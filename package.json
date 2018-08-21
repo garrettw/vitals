@@ -1,6 +1,6 @@
 {
   "name": "vitals-scss",
-  "version": "0.4.3",
+  "version": "0.5.0",
   "description": "A minimalistic bundle of three CSS/Sass tools for building modern, flexible websites: an improved normalize, a semantic flexbox-based grid system, and a fluid sizing function.",
   "keywords": [
     "sass",
