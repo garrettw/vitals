@@ -1,0 +1,67 @@
+@mixin grid {
+  display: -ms-grid;
+  display: grid;
+}
+
+@mixin _grid-spec($list, $type: 'row') {
+  @if $type == 'col' {
+      $type: 'column';
+  }
+
+  $ms-output: '';
+  $output: '';
+  @each $row in $list {
+    @if type-of($row) == 'list' {
+      $ms-output: unquote($ms-output + ' (' + nth($row, 2) + ')[' + nth($row, 1) + ']');
+      $output: unquote($output) repeat(#{nth($row, 1)}, #{nth($row, 2)});
+    } @else {
+      $ms-output: $ms-output + ' ' + $row;
+      $output: $output + ' ' + $row;
+    }
+  }
+
+  -ms-grid-#{$type}s: $ms-output;
+  grid-template-#{$type}s: $output;
+}
+
+@mixin grid-rows($list) {
+  @include _grid-spec($list, 'row');
+}
+
+@mixin grid-cols($list) {
+  @include _grid-spec($list, 'col');
+}
+
+/// Adapted from https://css-tricks.com/browser-compatibility-css-grid-layouts-simple-sass-mixins/
+@mixin grid-row($row-start, $row-end) {
+  -ms-grid-row: $row-start;
+  -ms-grid-row-span: $row-end - $row-start;
+  grid-row: #{$row-start}/#{$row-end};
+}
+
+/// Adapted from https://css-tricks.com/browser-compatibility-css-grid-layouts-simple-sass-mixins/
+@mixin grid-col($col-start, $col-end) {
+  -ms-grid-column: $col-start;
+  -ms-grid-column-span: $col-end - $col-start;
+  grid-column: #{$col-start}/#{$col-end};
+}
+
+@mixin grid-align-self($val) {
+  -ms-grid-column-align: $val;
+  align-self: $val;
+}
+@mixin grid-xalign($val)   { @include grid-align-self($val);    }
+@mixin grid-xalign-start   { @include grid-align-self(start);   }
+@mixin grid-xalign-center  { @include grid-align-self(center);  }
+@mixin grid-xalign-end     { @include grid-align-self(end);     }
+@mixin grid-xalign-stretch { @include grid-align-self(stretch); }
+
+@mixin grid-justify-self($val) {
+  -ms-grid-row-align: $val;
+  justify-self: $val;
+}
+@mixin grid-align($val)   { @include grid-justify-self($val);    }
+@mixin grid-align-start   { @include grid-justify-self(start);   }
+@mixin grid-align-center  { @include grid-justify-self(center);  }
+@mixin grid-align-end     { @include grid-justify-self(end);     }
+@mixin grid-align-stretch { @include grid-justify-self(stretch); }

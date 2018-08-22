@@ -12,7 +12,7 @@ Vitals makes a great addition to your Sass toolkit. It happily exists alongside
 the other libraries you already use and even expects you to use them.
 
 Vitals consists of a few simple Sass tools for building modern, flexible websites:
-an improved normalize (also available in pure CSS), a flexbox shorthand system,
+an improved normalize (also available in pure CSS), shorthand systems for flexbox and grid,
 and a fluid sizing function.
 
 Browser support:
@@ -48,8 +48,9 @@ important stuff:
 
 Or you can import the other components individually, if you like:
 ```scss
-@import "fluid";
 @import "flex";
+@import "fluid";
+@import "grid";
 ```
 
 ### Vitals Flex
@@ -164,7 +165,7 @@ I recommended above.
 
 It's that simple!
 
-### How to use Vitals Fluid
+### Vitals Fluid
 
 Fluid is a function that will output a flexible dimension, which scales along
 with the viewport width, for use with any property.
@@ -200,8 +201,49 @@ body {
 }
 ```
 
+### Vitals Grid
 
-## About the grid layout system
+Like Flex, this is little more than a few shorthand Grid directives. My main goal
+with this is to simplify IE 11 support where possible, without Autoprefixer.
+
+#### API Overview
+Container mixins:
+```scss
+// This is the most basic one you'll need to use.
+// Its only advantage over "display: grid;" is that it adds "display: -ms-grid;"
+// for IE 11 compatibility.
+@include grid;
+
+// Then, use one or both of these to continue setting up the grid.
+// Replace $list with a SPACE-separated spec for your rows or columns, similar to
+// the way you would write grid-template-rows or grid-template-columns.
+// NOTE: Where you would normally use the repeat(x, y) syntax, just use (x, y).
+@include grid-rows($list);
+@include grid-cols($list);
+```
+
+Cell mixins:
+```scss
+@include grid-row($row-start, $row-end);
+@include grid-col($col-start, $col-end);
+```
+
+Cell modifiers:
+```scss
+@mixin grid-xalign($val)   { @include grid-align-self($val);    }
+@mixin grid-xalign-start   { @include grid-align-self(start);   }
+@mixin grid-xalign-center  { @include grid-align-self(center);  }
+@mixin grid-xalign-end     { @include grid-align-self(end);     }
+@mixin grid-xalign-stretch { @include grid-align-self(stretch); }
+
+@mixin grid-align($val)   { @include grid-justify-self($val);    }
+@mixin grid-align-start   { @include grid-justify-self(start);   }
+@mixin grid-align-center  { @include grid-justify-self(center);  }
+@mixin grid-align-end     { @include grid-justify-self(end);     }
+@mixin grid-align-stretch { @include grid-justify-self(stretch); }
+```
+
+## About the layout systems
 
 At some point in my journey as a web dev, I came across Bootstrap like so many have.
 Then at a later date, I decided to see what else was out there, and decided I
@@ -224,9 +266,9 @@ allow better semantics. So that's what I've done here.
 Then Neat 2.0 came out and introduced me to the concept of a push-left grid being
 better than the old half-gutter grid I had originally written for Vitals. Because
 Neat is still sticking to a float-based grid, I adapted the push-left concept to
-flexbox to make the current Vitals Grid system.
+flexbox to make the current Vitals Flex system.
 
-You'll notice that there's no compiled version of the grid system.
+You'll notice that there's no compiled version of the layout systems.
 That's intentional; my entire purpose for making it was for it to be used with
 Sass to generate grid code for semantic CSS selectors. That's just not possible
 with pure CSS. So if you want a pure CSS flexbox grid system, check out [Batch](http://martskin.github.io/batch/).

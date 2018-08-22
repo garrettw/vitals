@@ -30,6 +30,7 @@ $item-gutter: $stdhgap/2 !default;
 }
 
 // Container modifiers
+@mixin flex-align($val)        { justify-content: $val;          }
 @mixin flex-align-start        { justify-content: flex-start;    }
 @mixin flex-align-center       { justify-content: center;        }
 @mixin flex-align-end          { justify-content: flex-end;      }
@@ -37,6 +38,7 @@ $item-gutter: $stdhgap/2 !default;
 @mixin flex-align-equalmargins { justify-content: space-around;  }
 @mixin flex-align-equalspace   { justify-content: space-evenly;  }
 
+@mixin flex-xalign($val)    { align-items: $val;       }
 @mixin flex-xalign-start    { align-items: flex-start; }
 @mixin flex-xalign-center   { align-items: center;     }
 @mixin flex-xalign-end      { align-items: flex-end;   }
@@ -44,6 +46,7 @@ $item-gutter: $stdhgap/2 !default;
 @mixin flex-xalign-stretch  { align-items: stretch;    }
 
 // Item modifiers
+@mixin item-xalign($val)    { align-self: $val;       }
 @mixin item-xalign-start    { align-self: flex-start; }
 @mixin item-xalign-center   { align-self: center;     }
 @mixin item-xalign-end      { align-self: flex-end;   }
