@@ -1,0 +1,80 @@
+$stdhgap: 1.25rem !default; // in case this file is used by itself
+
+// Item Gutter
+$item-gutter: $stdhgap/2 !default;
+
+// Containers
+@mixin flex {
+  display: flex;
+  align-items: stretch;
+}
+
+@mixin flex-row {
+  @include flex;
+  flex-flow: row wrap;
+}
+
+@mixin flex-row-reverse {
+  @include flex;
+  flex-flow: row-reverse wrap;
+}
+
+@mixin flex-col {
+  @include flex;
+  flex-flow: column wrap;
+}
+
+@mixin flex-col-reverse {
+  @include flex;
+  flex-flow: column-reverse wrap;
+}
+
+// Container modifiers
+@mixin flex-align($val) {
+  @if $val == start {
+    $val: flex-start;
+  } @else if $val == end {
+    $val: flex-end;
+  } @else if $val == justify {
+    $val: space-between;
+  }
+
+  justify-content: $val;
+}
+
+@mixin flex-xalign($val) {
+  @if $val == start {
+    $val: flex-start;
+  } @else if $val == end {
+    $val: flex-end;
+  }
+
+  align-items: $val;
+}
+
+// Item setup
+@mixin flex-item {
+  flex: 0 1 auto;
+}
+
+// Item modifiers
+@mixin item-xalign($val) {
+  @if $val == start {
+    $val: flex-start;
+  } @else if $val == end {
+    $val: flex-end;
+  }
+
+  align-self: $val;
+}
+
+@function item-size($fraction, $gutter: $item-gutter) {
+  @return calc(#{percentage($fraction)} - #{$gutter + ($gutter * $fraction)});
+}
+
+// Grid stuff
+@mixin grid-rows($val) { grid-template-rows: $val;    }
+@mixin grid-cols($val) { grid-template-columns: $val; }
+
+@mixin grid-align($val)  { justify-self: $val; }
+@mixin grid-xalign($val) { align-self: $val;   }

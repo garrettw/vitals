@@ -46,27 +46,20 @@ important stuff:
 @import "vitals";
 ```
 
-Or you can import the other components individually, if you like:
+Or you can import the pure Sass components without the normalize, if you like:
 ```scss
-@import "flex";
+@import "flex-grid";
 @import "fluid";
-@import "grid";
 ```
 
-### Vitals Flex
+### Vitals Flex+Grid
 
-I used to call this "Vitals Grid", but with a change in purpose I thought it was
-time to call it something else to avoid confusion with CSS Grid, especially if
-I decide to add some Grid functionality at some point.
-
-Flex is little more than a rewritten vocabulary for flexbox - one that makes more
-sense to me, hence I find it easier to remember. It's meant for people who are
-capable of making good use of flexbox already, but would like a more memorable way
-to write it.
+Flex+Grid is little more than some rewritten vocabulary that makes more sense to me.
+It's just a little syntactic sugar for those who already use flexbox and grid capably.
 
 #### API Overview
 
-Container mixins:
+Flex container mixins:
 ```scss
 // This is the most basic one that the others inherit from.
 // Its only advantage over "display: flex;" is that it adds "align-items: stretch"
@@ -80,38 +73,48 @@ Container mixins:
 @include flex-col-reverse;
 ```
 
-Container modifiers:
+Flex item mixin:
 ```scss
-// On a flex row, these align horizontally.
-  @mixin flex-align-start        { justify-content: flex-start;    }
-  @mixin flex-align-center       { justify-content: center;        }
-  @mixin flex-align-end          { justify-content: flex-end;      }
-  // Equal space between, none on l/r edge:
-  @mixin flex-align-justify      { justify-content: space-between; }
-  // Space on edge will be 1/2 of space between:
-  @mixin flex-align-equalmargins { justify-content: space-around;  }
-  // Space on edge will be equal to space between:
-  @mixin flex-align-equalspace   { justify-content: space-evenly;  }
+// This is just a shortcut for flex: 0 1 auto; for browser normalization purposes.
+@include flex-item;
+```
 
-// On a flex row, these align vertically. I call them "xalign" because "x" indicates
+Flex alignment modifiers:
+```scss
+// On a flex row, this aligns horizontally.
+// Accepts all valid CSS values for justify-content, as well as
+// "start", "end", and "justify" if you like those better.
+@include flex-align($val);
+
+// On a flex row, this aligns vertically. I call them "xalign" because "x" indicates
 // alignment on the cross axis, thus making these suitably named for columns as well.
-  @mixin flex-xalign-start    { align-items: flex-start; }
-  @mixin flex-xalign-center   { align-items: center;     }
-  @mixin flex-xalign-end      { align-items: flex-end;   }
-  @mixin flex-xalign-baseline { align-items: baseline;   }
-  @mixin flex-xalign-stretch  { align-items: stretch;    }
+// Accepts all valid CSS values for align-items, as well as "start" and "end".
+@include flex-xalign($val);
+
+// On a flex row child, this changes vertical alignment per item.
+// Accepts all valid CSS values for align-self, as well as "start" and "end".
+@include item-xalign($val);
 ```
 
-Item modifiers:
+Flex item sizing function:
 ```scss
-@mixin item-xalign-start    { align-self: flex-start; }
-@mixin item-xalign-center   { align-self: center;     }
-@mixin item-xalign-end      { align-self: flex-end;   }
-@mixin item-xalign-baseline { align-self: baseline;   }
-@mixin item-xalign-stretch  { align-self: stretch;    }
+// Returns a measurement that accounts for gutter width.
+// $fraction is literally a fraction size, like 1/4, that the item should occupy
+// in the desired dimension.
+// Default $gutter value is $item-gutter, which defaults to 0.625rem (10px).
+item-size($fraction, $gutter)
 ```
 
-#### Row Example
+Grid mixins:
+```scss
+@mixin grid-rows($val) { grid-template-rows: $val;    }
+@mixin grid-cols($val) { grid-template-columns: $val; }
+
+@mixin grid-align($val)  { justify-self: $val; }
+@mixin grid-xalign($val) { align-self: $val;   }
+```
+
+#### Flex row Example
 To start off, set up a container:
 ```scss
 .row {
@@ -129,7 +132,7 @@ with the default 10px gutter.
 }
 ```
 What happened here?
-The `item-size()` function spits out a dimension that accounts for gutter width.
+The `item-size()` function spits out a measurement that accounts for gutter width.
 For a standard push-left grid, you'll at least want to set `margin-left` to the
 gutter size. I also set `margin-bottom` so that vertical spacing is the same.
 `$item-gutter` is an included variable that is used by `item-size()` as the default
@@ -139,7 +142,7 @@ If you don't want a gutter, that's fine too.
 ```scss
 .this-other-item {
   @include flex-item;
-  width: item-size(1/4, 0);
+  width: item-size(1/3, 0); // equivalent to "width: percentage(1/3);"
 }
 ```
 
@@ -199,48 +202,6 @@ body {
     font-size: ms(1);
   }
 }
-```
-
-### Vitals Grid
-
-Like Flex, this is little more than a few shorthand Grid directives. My main goal
-with this is to simplify IE 11 support where possible, without Autoprefixer.
-
-#### API Overview
-Container mixins:
-```scss
-// This is the most basic one you'll need to use.
-// Its only advantage over "display: grid;" is that it adds "display: -ms-grid;"
-// for IE 11 compatibility.
-@include grid;
-
-// Then, use one or both of these to continue setting up the grid.
-// Replace $list with a SPACE-separated spec for your rows or columns, similar to
-// the way you would write grid-template-rows or grid-template-columns.
-// NOTE: Where you would normally use the repeat(x, y) syntax, just use (x, y).
-@include grid-rows($list);
-@include grid-cols($list);
-```
-
-Cell mixins:
-```scss
-@include grid-row($row-start, $row-end);
-@include grid-col($col-start, $col-end);
-```
-
-Cell modifiers:
-```scss
-@mixin grid-xalign($val)   { @include grid-align-self($val);    }
-@mixin grid-xalign-start   { @include grid-align-self(start);   }
-@mixin grid-xalign-center  { @include grid-align-self(center);  }
-@mixin grid-xalign-end     { @include grid-align-self(end);     }
-@mixin grid-xalign-stretch { @include grid-align-self(stretch); }
-
-@mixin grid-align($val)   { @include grid-justify-self($val);    }
-@mixin grid-align-start   { @include grid-justify-self(start);   }
-@mixin grid-align-center  { @include grid-justify-self(center);  }
-@mixin grid-align-end     { @include grid-justify-self(end);     }
-@mixin grid-align-stretch { @include grid-justify-self(stretch); }
 ```
 
 ## About the layout systems
