@@ -8,8 +8,7 @@
 
 **[Download Vitals using Yarn!](https://yarnpkg.com/en/package/vitals-scss)**
 
-Vitals makes a great addition to your Sass toolkit. It happily exists alongside
-the other libraries you already use and even expects you to use them.
+Vitals makes a great addition to your Sass toolkit. It exists solely to fill gaps that other projects do not.
 
 Vitals consists of a few simple Sass tools for building modern, flexible websites:
 an improved normalize (also available in pure CSS), shorthand systems for flexbox and grid,
@@ -31,7 +30,7 @@ supported. Very few people use those versions, and if support for them is needed
 I'm not interested in tackling that as it involves a lot of extra work for not much benefit.
 
 **I highly recommend combining Vitals with the excellent [MQ+](https://github.com/mcaskill/sass-mq)
-media query library to create responsive grids and font sizes.**
+media query library to create responsive grids and font sizes.** But Breakpoints is ok too.
 
 ## How to use Vitals in your Sass project
 
@@ -178,7 +177,7 @@ minimum or maximum.**
 
 This function takes a min and max size, and a min and max viewport.
 ```scss
-@function v-fluid($sm, $lg, $narrow, $wide);
+fluid($sm, $lg, $narrow, $wide)
 ```
 `$sm` is the size to be used when the viewport is at `$narrow` width, and `$lg`
 is the size at `$wide` width.
@@ -194,7 +193,7 @@ body {
 
   @include mq(45em, 60em) {
     // the intermediate size, which scales smoothly
-    font-size: v-fluid($sm: ms(0), $lg: ms(1), $narrow: 45em, $wide: 60em);
+    font-size: fluid($sm: ms(0), $lg: ms(1), $narrow: 45em, $wide: 60em);
   }
 
   @include mq(60em) {
