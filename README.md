@@ -132,10 +132,11 @@ with the default 10px gutter.
 ```
 What happened here?
 The `item-size()` function spits out a measurement that accounts for gutter width.
-For a standard push-left grid, you'll at least want to set `margin-left` to the
-gutter size. I also set `margin-bottom` so that vertical spacing is the same.
-`$item-gutter` is an included variable that is used by `item-size()` as the default
-gutter size if one isn't specified. It is set to `0.625rem`, which is usually `10px`.
+For a standard push-left grid a la [Bourbon Neat 2.0](http://neat.bourbon.io/), you'll
+at least want to set `margin-left` to the gutter size. I also set `margin-bottom`
+so that vertical spacing is the same. `$item-gutter` is an included variable that
+is used by `item-size()` as the default gutter size if one isn't specified. It is
+set to `0.625rem`, which is usually `10px`.
 
 If you don't want a gutter, that's fine too.
 ```scss
@@ -202,36 +203,6 @@ body {
   }
 }
 ```
-
-## About the layout systems
-
-At some point in my journey as a web dev, I came across Bootstrap like so many have.
-Then at a later date, I decided to see what else was out there, and decided I
-liked Foundation better. But as I started to look into using Sass, while Foundation
-had a Sass version, I came to find that there were some grid systems that were
-built primarily for Sass usage.
-
-... like [Bourbon Neat](http://neat.bourbon.io/). I was about to adopt that as
-my own when I realized that it was a float-based grid like the Bootstrap and
-Foundation I had left behind. But I did appreciate its emphasis on semantics,
-and I wanted to hang onto that as I looked for a flexbox-based system.
-
-So I found a project called [Batch](http://martskin.github.io/batch/)
-that implemented flexbox using Sass. It looked cool until I saw the unsemantic
-class names that resembled Bootstrap.
-
-I figured surely it wouldn't take much to adapt Batch into something that would
-allow better semantics. So that's what I've done here.
-
-Then Neat 2.0 came out and introduced me to the concept of a push-left grid being
-better than the old half-gutter grid I had originally written for Vitals. Because
-Neat is still sticking to a float-based grid, I adapted the push-left concept to
-flexbox to make the current Vitals Flex system.
-
-You'll notice that there's no compiled version of the layout systems.
-That's intentional; my entire purpose for making it was for it to be used with
-Sass to generate grid code for semantic CSS selectors. That's just not possible
-with pure CSS. So if you want a pure CSS flexbox grid system, check out [Batch](http://martskin.github.io/batch/).
 
 ## Is that it?
 
