@@ -127,6 +127,11 @@ select {
   text-transform: none;
 }
 
+select {
+  // Remove the inheritance of word-wrap in Safari.
+  word-wrap: normal;
+}
+
 // From https://github.com/h5bp/html5-boilerplate/pull/1403#issuecomment-25126183
 input:disabled,
 textarea:disabled {
