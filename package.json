@@ -2,6 +2,10 @@
   "name": "vitals-scss",
   "version": "0.7.1",
   "description": "A minimalistic bundle of a few CSS/Sass tools for building modern, flexible websites: an improved normalize, shorthand stuff for flexbox and grid, and a fluid sizing function.",
+  "author": "Garrett Whitehorn",
+  "license": "MIT",
+  "homepage": "https://github.com/garrettw/vitals",
+  "bugs": "https://github.com/garrettw/vitals/issues",
   "keywords": [
     "sass",
     "flexbox",
@@ -19,16 +23,46 @@
     "fluid"
   ],
   "main": "scss/_vitals.scss",
+  "browser": "css/vitals.css",
   "repository": {
     "url": "https://github.com/garrettw/vitals",
     "type": "git"
   },
-  "homepage": "https://github.com/garrettw/vitals",
-  "bugs": "https://github.com/garrettw/vitals/issues",
-  "author": "Garrett Whitehorn",
-  "license": "MIT",
   "files": [
     "scss/*",
     "css/*"
+  ],
+  "devDependencies": {
+    "cross-env": "^5.2",
+    "fibers": "^4.0.1",
+    "laravel-mix": "^4.1",
+    "resolve-url-loader": "^3.1",
+    "sass": "^1.22",
+    "sass-loader": "^7.1",
+    "stylelint": "^10.1",
+    "stylelint-checkstyle-formatter": "^0.1",
+    "stylelint-config-standard": "^18.3",
+    "stylelint-scss": "^3.9"
+  },
+  "scripts": {
+    "dev": "npm run development",
+    "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch": "npm run development -- --watch",
+    "watch-poll": "npm run watch -- --watch-poll",
+    "prod": "npm run production",
+    "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "start": "npm run watch",
+    "build": "npm run development && npm run production",
+    "lint:css": "stylelint \"scss/**/*.css\" || exit 0",
+    "lint:css-checkstyle": "stylelint \"scss/**/*.css\" --custom-formatter ./node_modules/stylelint-checkstyle-formatter/index.js || exit 0"
+  },
+  "browserslist": [
+    "ie 11",
+    "safari >= 10",
+    "ios >= 9",
+    "android >= 4",
+    "Firefox ESR",
+    "last 2 years and > 0.5% in US",
+    "last 2 years and > 0.5%"
   ]
 }
