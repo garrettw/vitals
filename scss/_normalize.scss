@@ -6,8 +6,8 @@ html {
   box-sizing: border-box;
   // provides a hard size for rem units to refer to, which pulls from user's browser setting
   font-size: 1em;
-  // correct line-height in all browsers
-  line-height: 1.15;
+  // cannot set a line-height for all browsers because it depends on font metrics
+  line-height: normal;
   // prevent adjustments of font-size after orientation changes - iOS
   -webkit-text-size-adjust: 100%;
 }

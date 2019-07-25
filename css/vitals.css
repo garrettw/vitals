@@ -1,7 +1,7 @@
 html {
   box-sizing: border-box;
   font-size: 1em;
-  line-height: 1.15;
+  line-height: normal;
   -webkit-text-size-adjust: 100%;
 }
 
