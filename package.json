@@ -1,6 +1,6 @@
 {
   "name": "vitals-scss",
-  "version": "0.7.1",
+  "version": "0.7.2",
   "description": "A minimalistic bundle of a few CSS/Sass tools for building modern, flexible websites: an improved normalize, shorthand stuff for flexbox and grid, and a fluid sizing function.",
   "author": "Garrett Whitehorn",
   "license": "MIT",
@@ -33,16 +33,16 @@
     "css/*"
   ],
   "devDependencies": {
-    "cross-env": "^5.2",
-    "fibers": "^4.0.1",
-    "laravel-mix": "^4.1",
-    "resolve-url-loader": "^3.1",
-    "sass": "^1.22",
-    "sass-loader": "^7.1",
-    "stylelint": "^10.1",
+    "cross-env": "^6.0.3",
+    "fibers": "^4.0.2",
+    "laravel-mix": "^5.0.1",
+    "resolve-url-loader": "^3.1.1",
+    "sass": "^1.25.0",
+    "sass-loader": "^8.0.2",
+    "stylelint": "^12.0.0",
     "stylelint-checkstyle-formatter": "^0.1",
-    "stylelint-config-standard": "^18.3",
-    "stylelint-scss": "^3.9"
+    "stylelint-config-standard": "^19.0.0",
+    "stylelint-scss": "^3.13.0"
   },
   "scripts": {
     "dev": "npm run development",
