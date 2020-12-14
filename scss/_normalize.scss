@@ -139,6 +139,12 @@ textarea:disabled {
   opacity: 0.8;
 }
 
+::-moz-focus-inner {
+    // Remove the inner border and padding - Firefox
+    border: 0;
+    padding: 0;
+  }
+
 button,
 input[type="button"],
 input[type="reset"],
@@ -150,17 +156,6 @@ input[type="submit"] {
   padding: 0.125em 0.375em;
   text-decoration: none;
   cursor: pointer;
-
-  &::-moz-focus-inner {
-    // Remove the inner border and padding - Firefox
-    padding: 0;
-    border: none;
-  }
-
-  &:-moz-focusring {
-    // Restore the focus styles unset by the previous rule
-    outline: 1px dotted ButtonText;
-  }
 
   &:hover,
   &:focus,
