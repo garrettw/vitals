@@ -5,9 +5,7 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 
-*,
-*::before,
-*::after {
+*, *::before, *::after {
   box-sizing: inherit;
 }
 
@@ -21,7 +19,6 @@ body {
  * Correct font size and margin within section and
  * article contexts - Chrome, Firefox, and Safari
  */
-
 h1 {
   font-size: 2em;
   margin: 0.67em 0;
@@ -29,7 +26,6 @@ h1 {
 
 /* Grouping content
    ========================================================================== */
-
 hr {
   box-sizing: content-box;
   height: 0;
@@ -46,7 +42,6 @@ samp {
 
 /* Text-level semantics
    ========================================================================== */
-
 abbr[title] {
   border-bottom: none;
   text-decoration: underline;
@@ -67,7 +62,6 @@ small {
  * Prevent `sub` and `sup` elements from affecting the line height in
  * all browsers.
  */
-
 sub,
 sup {
   font-size: 75%;
@@ -86,7 +80,6 @@ sup {
 
 /* Forms
    ========================================================================== */
-
 button,
 input,
 optgroup,
@@ -134,10 +127,7 @@ input[type=submit] {
   text-decoration: none;
   cursor: pointer;
 }
-
-button:hover,
-button:focus,
-button:active,
+button:hover, button:focus, button:active,
 input[type=button]:hover,
 input[type=button]:focus,
 input[type=button]:active,
@@ -202,7 +192,6 @@ textarea {
 
 /* Interactive
    ========================================================================== */
-
 details {
   display: block;
 }
@@ -213,7 +202,6 @@ summary {
 
 /* Misc
    ========================================================================== */
-
 template {
   display: none;
 }
@@ -269,7 +257,6 @@ svg {
   overflow: hidden;
   fill: currentColor;
 }
-
 svg:root {
   overflow: visible;
 }
@@ -322,6 +309,5 @@ iframe {
 optgroup {
   font-weight: 700;
 }
-
 
 /*# sourceMappingURL=vitals.css.map*/
