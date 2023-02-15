@@ -62,7 +62,7 @@ samp {
 abbr[title] {
   // Remove the bottom border - Chrome 57-
   border-bottom: none;
-  // Add the correct text decoration - Chrome, Edge, IE, Opera, and Safari
+  // Add the correct text decoration - Chrome, Edge, Opera, and Safari
   text-decoration: underline;
   text-decoration: underline dotted;
 }
@@ -116,13 +116,13 @@ textarea {
 }
 
 button {
-  // Show the overflow - IE and Edge
+  // Show the overflow - Edge
   overflow: visible;
 }
 
 button,
 select {
-  // Remove the inheritance of text transform - Edge, Firefox, and IE
+  // Remove the inheritance of text transform - Edge, Firefox
   text-transform: none;
 }
 
@@ -186,13 +186,11 @@ fieldset {
 }
 
 legend {
-  // Correct the text wrapping - Edge and IE
+  // Correct the text wrapping - Edge
   box-sizing: border-box;
   display: table;
   max-width: 100%;
   white-space: normal;
-  // Correct the color inheritance from fieldset elements - IE
-  color: inherit;
   // Remove padding so devs are not surprised when they zero out fieldset elements - all browsers
   padding: 0;
 }
@@ -200,11 +198,6 @@ legend {
 progress {
   // Add the correct vertical alignment - Chrome, Firefox, and Opera
   vertical-align: baseline;
-}
-
-textarea {
-  // Remove the default vertical scrollbar - IE 11
-  overflow: auto;
 }
 
 [type="number"]::-webkit-inner-spin-button,
@@ -234,7 +227,7 @@ textarea {
    ========================================================================== */
 
 details {
-  // Add the correct display - Edge, IE 11, and Firefox
+  // Add the correct display - Edge and Firefox
   display: block;
 }
 
@@ -245,11 +238,6 @@ details > summary:first-of-type {
 
 /* Misc
    ========================================================================== */
-
-template {
-  // Add the correct display - IE 11
-  display: none;
-}
 
 li {
   // Default list style to "outside" - Chrome

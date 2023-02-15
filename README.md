@@ -15,7 +15,6 @@ an improved normalize (also available in pure CSS), shorthand systems for flexbo
 and a fluid sizing function.
 
 Browser support:
-- IE 11
 - Edge
 - Firefox 28+
 - Chrome 44+
@@ -25,9 +24,7 @@ Browser support:
 - Firefox for Android
 
 The goal is to be compatible with the most common browsers and versions currently
-in use. For example, older versions of IE (like 6-8) are intentionally not
-supported. Very few people use those versions, and if support for them is needed,
-I'm not interested in tackling that as it involves a lot of extra work for not much benefit.
+in use.
 
 **I highly recommend combining Vitals with the excellent [MQ+](https://github.com/mcaskill/sass-mq)
 media query library to create responsive grids and font sizes.** But Breakpoints is ok too.
