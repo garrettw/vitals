@@ -42,8 +42,8 @@ hr {
   // Add the correct box sizing - Firefox
   box-sizing: content-box;
   height: 0;
-  // Show the overflow - Edge and IE
-  overflow: visible;
+  // Hide overflow, in case any browsers remain that don't follow the spec
+  overflow: hidden;
 }
 
 pre,
@@ -115,8 +115,7 @@ textarea {
   margin: 0;
 }
 
-button,
-input {
+button {
   // Show the overflow - IE and Edge
   overflow: visible;
 }
@@ -168,8 +167,12 @@ button,
 input[type="button"],
 input[type="reset"],
 input[type="submit"],
+input[type='file']::file-selector-button,
 optgroup,
 select {
+  // Correct default text color - iOS 15+
+  color: inherit;
+
   &:disabled {
     color: #808080;
     cursor: default;
@@ -211,7 +214,7 @@ textarea {
 }
 
 [type="search"] {
-  // Correct  odd appearance - Chrome and Safari
+  // Correct odd appearance - Chrome and Safari
   -webkit-appearance: textfield;
   // Correct the outline style - Safari
   outline-offset: -2px;
@@ -235,7 +238,7 @@ details {
   display: block;
 }
 
-summary {
+details > summary:first-of-type {
   // Add the correct display - all browsers
   display: list-item;
 }
@@ -246,6 +249,11 @@ summary {
 template {
   // Add the correct display - IE 11
   display: none;
+}
+
+li {
+  // Default list style to "outside" - Chrome
+  list-style-position: outside;
 }
 
 
