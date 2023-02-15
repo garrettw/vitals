@@ -66,6 +66,7 @@ $stdhgap: 1.25rem !default;  // 20px
   // Add the correct text decoration - Chrome, Edge, Opera, and Safari
   text-decoration: underline;
   text-decoration: underline dotted;
+  text-decoration-style: dotted;
 }
 
 :where(b, strong) {
