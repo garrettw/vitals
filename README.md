@@ -6,7 +6,7 @@
 [![npm weekly downloads](https://img.shields.io/npm/dw/vitals-scss.svg?style=flat-square)](https://www.npmjs.com/package/vitals-scss)
 [![npm monthly downloads](https://img.shields.io/npm/dm/vitals-scss.svg?style=flat-square)](https://www.npmjs.com/package/vitals-scss)
 
-**[Download Vitals using Yarn!](https://yarnpkg.com/en/package/vitals-scss)**
+**[Download Vitals using Yarn!](https://yarnpkg.com/package/vitals-scss)**
 
 Vitals makes a great addition to your Sass toolkit. It exists solely to fill gaps that other projects do not.
 
