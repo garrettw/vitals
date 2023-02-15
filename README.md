@@ -15,11 +15,11 @@ an improved normalize (also available in pure CSS), shorthand systems for flexbo
 and a fluid sizing function.
 
 Browser support:
-- Edge
-- Firefox 28+
-- Chrome 44+
-- Safari/iOS 10.1+
-- Opera 31+
+- Edge 88+
+- Firefox 78+
+- Chrome 88+
+- Safari/iOS 14+
+- Opera 74+
 - Chrome for Android
 - Firefox for Android
 

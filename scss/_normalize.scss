@@ -1,7 +1,7 @@
 $stdvgap: 1.125rem !default; // 18px
 $stdhgap: 1.25rem !default;  // 20px
 
-html {
+:where(html) {
   // better box-sizing (opinionated)
   box-sizing: border-box;
   // provides a hard size for rem units to refer to, which pulls from user's browser setting
@@ -17,7 +17,7 @@ html {
   box-sizing: inherit;
 }
 
-body {
+:where(body) {
   // no horizontal scrolling ever (opinionated)
   overflow-x: hidden;
   // body should fill the screen vertically (opinionated)
@@ -26,30 +26,33 @@ body {
   margin: 0;
 }
 
-/**
- * Correct font size and margin within section and
- * article contexts - Chrome, Firefox, and Safari
- */
-h1 {
+:where(h1) {
+  // Correct font size and margin in section/article - Chrome, Edge, Firefox, and Safari
   font-size: 2em;
-  margin: 0.67em 0;
+  margin-block-end: 0.67em;
+  margin-block-start: 0.67em;
 }
 
 /* Grouping content
    ========================================================================== */
 
-hr {
+:where(dl, ol, ul) :where(dl, ol, ul) {
+  // Remove the margin on nested lists - Chrome, Edge, and Safari
+  margin-block-end: 0;
+  margin-block-start: 0;
+}
+
+:where(hr) {
   // Add the correct box sizing - Firefox
   box-sizing: content-box;
   height: 0;
+  // Correct the inheritance of border color - Firefox
+  color: inherit;
   // Hide overflow, in case any browsers remain that don't follow the spec
   overflow: hidden;
 }
 
-pre,
-code,
-kbd,
-samp {
+:where(pre, code, kbd, samp) {
   // Correct inheritance and scaling of font size - all browsers
   font-family: monospace, monospace;
   // Correct odd em font sizing - all browsers
@@ -59,98 +62,103 @@ samp {
 /* Text-level semantics
    ========================================================================== */
 
-abbr[title] {
-  // Remove the bottom border - Chrome 57-
-  border-bottom: none;
+:where(abbr[title]) {
   // Add the correct text decoration - Chrome, Edge, Opera, and Safari
   text-decoration: underline;
   text-decoration: underline dotted;
 }
 
-b,
-strong {
+:where(b, strong) {
   // Add the correct font weight - Chrome, Edge, and Safari
   font-weight: bolder;
 }
 
-small {
+:where(small) {
   // Add the correct font size - all browsers
   font-size: 80%;
 }
 
-/**
- * Prevent `sub` and `sup` elements from affecting the line height in
- * all browsers.
- */
-
-sub,
-sup {
+:where(sub, sup) {
+  // Prevent `sub` and `sup` elements from affecting the line height - all browsers
   font-size: 75%;
   line-height: 0;
   position: relative;
   vertical-align: baseline;
 }
 
-sub {
+:where(sub) {
   bottom: -0.25em;
 }
 
-sup {
+:where(sup) {
   top: -0.5em;
+}
+
+/* Tabular data
+   ========================================================================== */
+
+:where(table) {
+  // Correct table border color - Chrome, Edge, Safari
+  border-color: currentColor;
+  // Remove text indentation from table contents - Chrome, Edge, Safari
+  text-indent: 0;
 }
 
 /* Forms
    ========================================================================== */
 
-button,
-input,
-optgroup,
-select,
-textarea {
+:where(button, input, optgroup, select, textarea) {
   max-width: 100%;
   // Change the font styles - all browsers
   font-size: 100%;
   line-height: inherit;
-  // Remove the margin - Firefox and Safari
+  // Remove the margin on controls - Firefox and Safari
   margin: 0;
 }
 
-button {
+:where(button) {
   // Show the overflow - Edge
   overflow: visible;
 }
 
-button,
-select {
-  // Remove the inheritance of text transform - Edge, Firefox
+:where(button, select) {
+  // Remove the inheritance of text transform - Firefox
   text-transform: none;
 }
 
-select {
-  // Remove the inheritance of word-wrap in Safari.
+:where(select) {
+  // Remove the inheritance of word-wrap - Safari
   word-wrap: normal;
 }
 
 // From https://github.com/h5bp/html5-boilerplate/pull/1403#issuecomment-25126183
-input:disabled,
-textarea:disabled {
+:where(input, textarea):disabled {
   color: #404040;
   opacity: 0.8;
 }
 
-::-moz-focus-inner {
-    // Remove the inner border and padding - Firefox
-    border: 0;
+:where(button, input:is([type="button"], [type="color"], [type="reset"], [type="submit"])) {
+  &::-moz-focus-inner {
+    // Remove the inner border and padding of focus outlines - Firefox
+    border-style: none;
     padding: 0;
   }
 
-button,
-input[type="button"],
-input[type="reset"],
-input[type="submit"] {
+  &::-moz-focusring {
+    // Restore the focus outline styles unset by the previous rule - Firefox
+    outline: 1px dotted ButtonText;
+  }
+}
+
+:where(:-moz-ui-invalid) {
+  // Remove the additional :invalid styles - Firefox
+  box-shadow: none;
+}
+
+:where(button, input:is([type="button"], [type="reset"], [type="submit"])) {
   display: inline-block;
   -moz-appearance: button;
-  // Correct the inability to style clickable types - iOS and Safari
+  // Correct the inability to style buttons - iOS and Safari
   -webkit-appearance: button;
   padding: 0.125em 0.375em;
   text-decoration: none;
@@ -163,13 +171,13 @@ input[type="submit"] {
   }
 }
 
-button,
-input[type="button"],
-input[type="reset"],
-input[type="submit"],
-input[type='file']::file-selector-button,
-optgroup,
-select {
+:where(
+  button,
+  input:is([type="button"],[type="reset"], [type="submit"]),
+  input[type='file']::file-selector-button,
+  optgroup,
+  select
+) {
   // Correct default text color - iOS 15+
   color: inherit;
 
@@ -180,12 +188,12 @@ select {
   }
 }
 
-fieldset {
+:where(fieldset) {
   // Correct the padding - Firefox
   padding: 0.35em 0.75em 0.625em;
 }
 
-legend {
+:where(legend) {
   // Correct the text wrapping - Edge
   box-sizing: border-box;
   display: table;
@@ -195,51 +203,80 @@ legend {
   padding: 0;
 }
 
-progress {
-  // Add the correct vertical alignment - Chrome, Firefox, and Opera
+:where(progress) {
+  // Add the correct vertical alignment - Chrome, Edge, Firefox, and Opera
   vertical-align: baseline;
 }
 
-[type="number"]::-webkit-inner-spin-button,
-[type="number"]::-webkit-outer-spin-button {
-  // Correct the cursor style of increment and decrement buttons - Chrome
+::-webkit-inner-spin-button,
+::-webkit-outer-spin-button {
+  // Correct the cursor style of increment and decrement buttons - Safari
   height: auto;
 }
 
-[type="search"] {
-  // Correct odd appearance - Chrome and Safari
+::-webkit-input-placeholder {
+  // Correct the text style of placeholders - Chrome, Edge, and Safari
+  color: inherit;
+  opacity: 0.54;
+}
+
+:where(input[type="search"]) {
+  // Correct odd appearance - Chrome, Edge, and Safari
   -webkit-appearance: textfield;
   // Correct the outline style - Safari
   outline-offset: -2px;
 }
 
-[type="search"]::-webkit-search-decoration {
-  // Remove the inner padding - Chrome and Safari on macOS
+::-webkit-search-decoration {
+  // Remove the inner padding - Chrome, Edge, and Safari on macOS
   -webkit-appearance: none;
 }
 
 ::-webkit-file-upload-button {
-  // Correct the inability to style clickable types - iOS and Safari
+  // Correct the inability to style upload buttons - iOS and Safari
   -webkit-appearance: button;
+  // Change font properties to `inherit` - iOS and Safari
+  font: inherit;
 }
 
 /* Interactive
    ========================================================================== */
 
-details {
+:where(details) {
   // Add the correct display - Edge and Firefox
   display: block;
 }
 
-details > summary:first-of-type {
+:where(details > summary:first-of-type) {
   // Add the correct display - all browsers
   display: list-item;
+}
+
+:where(dialog) {
+  // Add the correct styles - Safari
+  background-color: white;
+  border: solid;
+  color: black;
+  height: -moz-fit-content;
+  height: fit-content;
+  left: 0;
+  margin: auto;
+  padding: 1em;
+  position: absolute;
+  right: 0;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+:where(dialog:not([open])) {
+  // Add the correct styles - Safari
+  display: none;
 }
 
 /* Misc
    ========================================================================== */
 
-li {
+:where(li) {
   // Default list style to "outside" - Chrome
   list-style-position: outside;
 }
@@ -251,54 +288,51 @@ li {
 // Sane defaults //
 ///////////////////
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-blockquote,
-figure,
-ol,
-ul,
-li {
+:where(
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  blockquote,
+  figure,
+  ol,
+  ul,
+  li
+) {
   margin: 0;
   padding: 0;
 }
 
-p,
-pre,
-hr {
+:where(p, pre, hr) {
   margin: $stdvgap 0;
 }
 
-blockquote {
+:where(blockquote) {
   margin: $stdvgap $stdhgap*1.6;
 }
 
-a,
-button {
+:where(a, button) {
   color: inherit;
 }
 
-a {
+:where(a) {
   text-decoration: underline;
 }
 
-a,
-a:not(.button):active {
+:where(a, a:not(.button):active) {
   background-color: transparent;
 }
 
-img,
-svg {
+:where(img, svg) {
   max-width: 100%;
   height: auto;
   vertical-align: middle;
   border: none;
 }
 
-svg {
+:where(svg) {
   overflow: hidden;
   fill: currentColor;
 
@@ -307,51 +341,48 @@ svg {
   }
 }
 
-[disabled] {
+:where([disabled]) {
   cursor: default;
   opacity: 0.5;
 }
 
-fieldset {
+:where(fieldset) {
   min-width: 0;
 }
 
-body:not(:-moz-handler-blocked) fieldset {
+:where(body:not(:-moz-handler-blocked) fieldset) {
   display: table-cell;
 }
 
-legend {
+:where(legend) {
   margin-left: $stdhgap*-0.25;
   padding: 0 $stdhgap*0.25;
   border: none;
 }
 
-textarea {
+:where(textarea) {
   vertical-align: top;
   resize: vertical;
 }
 
-details,
-main {
+:where(details, main) {
   display: block;
 }
 
-table {
+:where(table) {
   margin: $stdvgap 0;
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-cite,
-dfn,
-em {
+:where(cite, dfn, em) {
   font-style: italic;
 }
 
-iframe {
+:where(iframe) {
   border: none;
 }
 
-optgroup {
+:where(optgroup) {
   font-weight: 700;
 }
