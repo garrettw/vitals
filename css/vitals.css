@@ -1,4 +1,4 @@
-html {
+:where(html) {
   box-sizing: border-box;
   font-size: 1em;
   line-height: normal;
@@ -9,117 +9,118 @@ html {
   box-sizing: inherit;
 }
 
-body {
+:where(body) {
   overflow-x: hidden;
   min-height: 100%;
   margin: 0;
 }
 
-/**
- * Correct font size and margin within section and
- * article contexts - Chrome, Firefox, and Safari
- */
-h1 {
+:where(h1) {
   font-size: 2em;
-  margin: 0.67em 0;
+  -webkit-margin-after: 0.67em;
+          margin-block-end: 0.67em;
+  -webkit-margin-before: 0.67em;
+          margin-block-start: 0.67em;
 }
 
 /* Grouping content
    ========================================================================== */
-hr {
-  box-sizing: content-box;
-  height: 0;
-  overflow: visible;
+:where(dl, ol, ul) :where(dl, ol, ul) {
+  -webkit-margin-after: 0;
+          margin-block-end: 0;
+  -webkit-margin-before: 0;
+          margin-block-start: 0;
 }
 
-pre,
-code,
-kbd,
-samp {
+:where(hr) {
+  box-sizing: content-box;
+  height: 0;
+  color: inherit;
+  overflow: hidden;
+}
+
+:where(pre, code, kbd, samp) {
   font-family: monospace, monospace;
   font-size: 1em;
 }
 
 /* Text-level semantics
    ========================================================================== */
-abbr[title] {
-  border-bottom: none;
+:where(abbr[title]) {
   text-decoration: underline;
   -webkit-text-decoration: underline dotted;
           text-decoration: underline dotted;
 }
 
-b,
-strong {
+:where(b, strong) {
   font-weight: bolder;
 }
 
-small {
+:where(small) {
   font-size: 80%;
 }
 
-/**
- * Prevent `sub` and `sup` elements from affecting the line height in
- * all browsers.
- */
-sub,
-sup {
+:where(sub, sup) {
   font-size: 75%;
   line-height: 0;
   position: relative;
   vertical-align: baseline;
 }
 
-sub {
+:where(sub) {
   bottom: -0.25em;
 }
 
-sup {
+:where(sup) {
   top: -0.5em;
+}
+
+/* Tabular data
+   ========================================================================== */
+:where(table) {
+  border-color: currentColor;
+  text-indent: 0;
 }
 
 /* Forms
    ========================================================================== */
-button,
-input,
-optgroup,
-select,
-textarea {
+:where(button, input, optgroup, select, textarea) {
   max-width: 100%;
   font-size: 100%;
   line-height: inherit;
   margin: 0;
 }
 
-button,
-input {
+:where(button) {
   overflow: visible;
 }
 
-button,
-select {
+:where(button, select) {
   text-transform: none;
 }
 
-select {
+:where(select) {
   word-wrap: normal;
 }
 
-input:disabled,
-textarea:disabled {
+:where(input, textarea):disabled {
   color: #404040;
   opacity: 0.8;
 }
 
-::-moz-focus-inner {
-  border: 0;
+:where(button, input:is([type=button], [type=color], [type=reset], [type=submit]))::-moz-focus-inner {
+  border-style: none;
   padding: 0;
 }
+:where(button, input:is([type=button], [type=color], [type=reset], [type=submit]))::-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
 
-button,
-input[type=button],
-input[type=reset],
-input[type=submit] {
+:where(:-moz-ui-invalid) {
+  box-shadow: none;
+}
+
+:where(button, input:is([type=button], [type=reset], [type=submit])) {
   display: inline-block;
   -moz-appearance: button;
   -webkit-appearance: button;
@@ -127,86 +128,120 @@ input[type=submit] {
   text-decoration: none;
   cursor: pointer;
 }
-button:hover, button:focus, button:active,
-input[type=button]:hover,
-input[type=button]:focus,
-input[type=button]:active,
-input[type=reset]:hover,
-input[type=reset]:focus,
-input[type=reset]:active,
-input[type=submit]:hover,
-input[type=submit]:focus,
-input[type=submit]:active {
+:where(button, input:is([type=button], [type=reset], [type=submit])):hover, :where(button, input:is([type=button], [type=reset], [type=submit])):focus, :where(button, input:is([type=button], [type=reset], [type=submit])):active {
   text-decoration: none;
 }
 
-button:disabled,
-input[type=button]:disabled,
-input[type=reset]:disabled,
-input[type=submit]:disabled,
-optgroup:disabled,
-select:disabled {
+:where(button,
+input:is([type=button], [type=reset], [type=submit]),
+input[type=file]::-webkit-file-upload-button,
+optgroup,
+select) {
+  color: inherit;
+}
+
+:where(button,
+input:is([type=button], [type=reset], [type=submit]),
+input[type=file]::file-selector-button,
+optgroup,
+select) {
+  color: inherit;
+}
+:where(button,
+input:is([type=button], [type=reset], [type=submit]),
+input[type=file]::-webkit-file-upload-button,
+optgroup,
+select):disabled {
+  color: #808080;
+  cursor: default;
+  opacity: 1;
+}
+:where(button,
+input:is([type=button], [type=reset], [type=submit]),
+input[type=file]::file-selector-button,
+optgroup,
+select):disabled {
   color: #808080;
   cursor: default;
   opacity: 1;
 }
 
-fieldset {
+:where(fieldset) {
   padding: 0.35em 0.75em 0.625em;
 }
 
-legend {
+:where(legend) {
   box-sizing: border-box;
   display: table;
   max-width: 100%;
   white-space: normal;
-  color: inherit;
   padding: 0;
 }
 
-progress {
+:where(progress) {
   vertical-align: baseline;
 }
 
-textarea {
-  overflow: auto;
-}
-
-[type=number]::-webkit-inner-spin-button,
-[type=number]::-webkit-outer-spin-button {
+::-webkit-inner-spin-button,
+::-webkit-outer-spin-button {
   height: auto;
 }
 
-[type=search] {
+::-webkit-input-placeholder {
+  color: inherit;
+  opacity: 0.54;
+}
+
+:where(input[type=search]) {
   -webkit-appearance: textfield;
   outline-offset: -2px;
 }
 
-[type=search]::-webkit-search-decoration {
+::-webkit-search-decoration {
   -webkit-appearance: none;
 }
 
 ::-webkit-file-upload-button {
   -webkit-appearance: button;
+  font: inherit;
 }
 
 /* Interactive
    ========================================================================== */
-details {
+:where(details) {
   display: block;
 }
 
-summary {
+:where(details > summary:first-of-type) {
   display: list-item;
+}
+
+:where(dialog) {
+  background-color: white;
+  border: solid;
+  color: black;
+  height: -moz-fit-content;
+  height: fit-content;
+  left: 0;
+  margin: auto;
+  padding: 1em;
+  position: absolute;
+  right: 0;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+:where(dialog:not([open])) {
+  display: none;
 }
 
 /* Misc
    ========================================================================== */
-template {
-  display: none;
+:where(li) {
+  list-style-position: outside;
 }
 
-h1,
+:where(h1,
 h2,
 h3,
 h4,
@@ -216,97 +251,89 @@ blockquote,
 figure,
 ol,
 ul,
-li {
+li) {
   margin: 0;
   padding: 0;
 }
 
-p,
-pre,
-hr {
+:where(p, pre, hr) {
   margin: 1.125rem 0;
 }
 
-blockquote {
+:where(blockquote) {
   margin: 1.125rem 2rem;
 }
 
-a,
-button {
+:where(a, button) {
   color: inherit;
 }
 
-a {
+:where(a) {
   text-decoration: underline;
 }
 
-a,
-a:not(.button):active {
+:where(a, a:not(.button):active) {
   background-color: transparent;
 }
 
-img,
-svg {
+:where(img, svg) {
   max-width: 100%;
   height: auto;
   vertical-align: middle;
   border: none;
 }
 
-svg {
+:where(svg) {
   overflow: hidden;
   fill: currentColor;
 }
-svg:root {
+:where(svg):root {
   overflow: visible;
 }
 
-[disabled] {
+:where([disabled]) {
   cursor: default;
   opacity: 0.5;
 }
 
-fieldset {
+:where(fieldset) {
   min-width: 0;
 }
 
-body:not(:-moz-handler-blocked) fieldset {
+:where(body:not(:-moz-handler-blocked) fieldset) {
   display: table-cell;
 }
 
-legend {
+:where(legend) {
   margin-left: -0.3125rem;
   padding: 0 0.3125rem;
   border: none;
 }
 
-textarea {
+:where(textarea) {
   vertical-align: top;
   resize: vertical;
 }
 
-details,
-main {
+:where(details, main) {
   display: block;
 }
 
-table {
+:where(table) {
   margin: 1.125rem 0;
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-cite,
-dfn,
-em {
+:where(cite, dfn, em) {
   font-style: italic;
 }
 
-iframe {
+:where(iframe) {
   border: none;
 }
 
-optgroup {
+:where(optgroup) {
   font-weight: 700;
 }
 
