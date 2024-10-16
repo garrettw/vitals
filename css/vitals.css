@@ -17,19 +17,15 @@
 
 :where(h1) {
   font-size: 2em;
-  -webkit-margin-after: 0.67em;
-          margin-block-end: 0.67em;
-  -webkit-margin-before: 0.67em;
-          margin-block-start: 0.67em;
+  margin-block-end: 0.67em;
+  margin-block-start: 0.67em;
 }
 
 /* Grouping content
    ========================================================================== */
 :where(dl, ol, ul) :where(dl, ol, ul) {
-  -webkit-margin-after: 0;
-          margin-block-end: 0;
-  -webkit-margin-before: 0;
-          margin-block-start: 0;
+  margin-block-end: 0;
+  margin-block-start: 0;
 }
 
 :where(hr) {
@@ -50,6 +46,7 @@
   text-decoration: underline;
   -webkit-text-decoration: underline dotted;
           text-decoration: underline dotted;
+  text-decoration-style: dotted;
 }
 
 :where(b, strong) {
@@ -220,14 +217,12 @@ select):disabled {
   background-color: white;
   border: solid;
   color: black;
-  height: -moz-fit-content;
   height: fit-content;
   left: 0;
   margin: auto;
   padding: 1em;
   position: absolute;
   right: 0;
-  width: -moz-fit-content;
   width: fit-content;
 }
 
