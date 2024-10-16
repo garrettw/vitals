@@ -1,6 +1,6 @@
 {
   "name": "vitals-scss",
-  "version": "0.8.2",
+  "version": "0.8.3",
   "description": "A minimalistic bundle of a few CSS/Sass tools for building modern, flexible websites: an improved normalize, shorthand stuff for flexbox and grid, and a fluid sizing function.",
   "author": "Garrett Whitehorn",
   "license": "MIT",
