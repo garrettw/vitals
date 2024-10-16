@@ -298,9 +298,9 @@ $stdhgap: 1.25rem !default;  // 20px
   h6,
   blockquote,
   figure,
-  ol,
-  ul,
-  li:not(li li)
+  ol:not(ol ol, ul ol),
+  ul:not(ol ul, ul ul),
+  li
 ) {
   margin: 0;
   padding: 0;
