@@ -1,46 +1,47 @@
+@use "sass:math";
+@use "sass:meta";
+
 @function strip-unit($number) {
-  @if type-of($number) == 'number' and not unitless($number) {
+  @if meta.type-of($number) == 'number' and not math.is-unitless($number) {
     @return $number / ($number * 0 + 1);
   }
+
   @return $number;
 }
 
 @function fluid($sm, $lg, $narrow, $wide) {
-  @if unitless($sm) {
+  @if math.is-unitless($sm) {
     $sm: $sm * 1px;
   }
 
-  @if not (unitless($lg) or unit($sm) == unit($lg)) {
+  @if not (math.is-unitless($lg) or math.unit($sm) == math.unit($lg)) {
     @error 'Element size units (first two parameters) do not match.';
   }
 
-  @if unitless($narrow) {
+  @if math.is-unitless($narrow) {
     @error '$narrow (third parameter) requires units to be specified.';
   }
 
-  @if not (unitless($wide) or unit($narrow) == unit($wide)) {
+  @if not (math.is-unitless($wide) or math.unit($narrow) == math.unit($wide)) {
     @error 'Viewport width units (last two parameters) do not match.';
   }
 
-  @if unit($narrow) == 'em' {
+  @if math.unit($narrow) == 'em' {
     $narrow: strip-unit($narrow) * 1rem;
     $wide: strip-unit($wide) * 1rem;
   }
 
-  @if unit($narrow) == 'rem' and unit($sm) == 'px' {
+  @if math.unit($narrow) == 'rem' and math.unit($sm) == 'px' {
     $sm: rem($sm);
     $lg: rem($lg);
   }
 
-  @if unit($narrow) == 'px' and not (unit($sm) == 'px') {
+  @if math.unit($narrow) == 'px' and not (math.unit($sm) == 'px') {
     $narrow: rem($narrow);
     $wide: rem($wide);
   }
 
   @return calc(
-    (100vw - #{$narrow})
-    / #{strip-unit($wide - $narrow)}
-    * #{strip-unit($lg - $sm)}
-    + #{$sm}
+    (100vw - #{$narrow}) / #{strip-unit($wide - $narrow)} * #{strip-unit($lg - $sm)} + #{$sm}
   );
 }

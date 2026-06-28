@@ -4,10 +4,13 @@ $stdhgap: 1.25rem !default;  // 20px
 :where(html) {
   // better box-sizing (opinionated)
   box-sizing: border-box;
+
   // provides a hard size for rem units to refer to, which pulls from user's browser setting
   font-size: 1em;
+
   // cannot set a line-height for all browsers because it depends on font metrics
   line-height: normal;
+
   // prevent adjustments of font-size after orientation changes - iOS
   -webkit-text-size-adjust: 100%;
 }
@@ -20,8 +23,10 @@ $stdhgap: 1.25rem !default;  // 20px
 :where(body) {
   // no horizontal scrolling ever (opinionated)
   overflow-x: hidden;
+
   // body should fill the screen vertically (opinionated)
   min-height: 100%;
+
   // body shouldn't have a margin (opinionated)
   margin: 0;
 }
@@ -46,8 +51,10 @@ $stdhgap: 1.25rem !default;  // 20px
   // Add the correct box sizing - Firefox
   box-sizing: content-box;
   height: 0;
+
   // Correct the inheritance of border color - Firefox
   color: inherit;
+
   // Hide overflow, in case any browsers remain that don't follow the spec
   overflow: hidden;
 }
@@ -55,6 +62,7 @@ $stdhgap: 1.25rem !default;  // 20px
 :where(pre, code, kbd, samp) {
   // Correct inheritance and scaling of font size - all browsers
   font-family: monospace, monospace;
+
   // Correct odd em font sizing - all browsers
   font-size: 1em;
 }
@@ -101,6 +109,7 @@ $stdhgap: 1.25rem !default;  // 20px
 :where(table) {
   // Correct table border color - Chrome, Edge, Safari
   border-color: currentColor;
+
   // Remove text indentation from table contents - Chrome, Edge, Safari
   text-indent: 0;
 }
@@ -110,9 +119,11 @@ $stdhgap: 1.25rem !default;  // 20px
 
 :where(button, input, optgroup, select, textarea) {
   max-width: 100%;
+
   // Change the font styles - all browsers
   font-size: 100%;
   line-height: inherit;
+
   // Remove the margin on controls - Firefox and Safari
   margin: 0;
 }
@@ -200,6 +211,7 @@ $stdhgap: 1.25rem !default;  // 20px
   display: table;
   max-width: 100%;
   white-space: normal;
+
   // Remove padding so devs are not surprised when they zero out fieldset elements - all browsers
   padding: 0;
 }

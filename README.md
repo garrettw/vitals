@@ -6,12 +6,12 @@
 [![npm weekly downloads](https://img.shields.io/npm/dw/vitals-scss.svg?style=flat-square)](https://www.npmjs.com/package/vitals-scss)
 [![npm monthly downloads](https://img.shields.io/npm/dm/vitals-scss.svg?style=flat-square)](https://www.npmjs.com/package/vitals-scss)
 
-**[Download Vitals using Yarn!](https://yarnpkg.com/package/vitals-scss)**
+## Overview
 
 Vitals makes a great addition to your Sass toolkit. It exists solely to fill gaps that other projects do not.
 
-Vitals consists of a few simple Sass tools for building modern, flexible websites:
-an improved normalize (also available in pure CSS), shorthand systems for flexbox and grid,
+It consists of a few simple Sass tools for building modern, flexible websites:
+an improved normalize (including a pure CSS version), shorthand systems for flexbox and grid,
 and a fluid sizing function.
 
 Browser support:
@@ -26,26 +26,45 @@ Browser support:
 The goal is to be compatible with the most common browsers and versions currently
 in use.
 
-**I highly recommend combining Vitals with the excellent [MQ+](https://github.com/mcaskill/sass-mq)
-media query library to create responsive grids and font sizes.** But Breakpoints is ok too.
+**I highly recommend combining Vitals with the excellent [MQ](https://github.com/sass-mq/sass-mq)
+media query library to create responsive grids and font sizes.** But [Breakpoint](https://github.com/at-import/breakpoint) is ok too.
 
-## How to use Vitals in your Sass project
+## Installation / Usage
 
-_**Disclaimer:** I come from the world of PHP and have no experience with Ruby or Node,
-so I've never really used any of the usual tooling to install this kind of stuff.
-So naturally, I'm writing these instructions for someone like myself._
+Install from npm:
 
-If you grab everything in the `scss` directory and put it in the same directory
-as the file you're working on, you can just use this, which will pull in all the
-important stuff:
-```scss
-@import "vitals";
+```bash
+npm install vitals-scss
 ```
 
-Or you can import the pure Sass components without the normalize, if you like:
+Or with Yarn:
+
+```bash
+yarn add vitals-scss
+```
+
+If you install Vitals from npm or Yarn, use the package directly from `node_modules` with Sass module syntax:
 ```scss
-@import "flex-grid";
-@import "fluid";
+@use "vitals-scss";
+```
+
+This works in modern JS build workflows such as Vite, Webpack/Sass loader, Next.js, Astro, Eleventy, and any Dart Sass-based pipeline that resolves `node_modules`.
+
+If you want only the core Sass utilities without the normalize layer:
+```scss
+@use "vitals-scss/scss/flex-grid";
+@use "vitals-scss/scss/fluid";
+```
+
+If you instead copy the `scss` directory into your project and use it locally, import it from the local path:
+```scss
+@use "vitals";
+```
+
+Or you can load just the core Sass components without the normalize layer:
+```scss
+@use "flex-grid";
+@use "fluid";
 ```
 
 ### Vitals Flex+Grid
@@ -205,13 +224,12 @@ body {
 
 Yes, for now. I think there are some existing projects that adequately address
 their goals, such as:
-- [Bourbon](http://bourbon.io/)
-- [MQ+](https://github.com/mcaskill/sass-mq) (media queries)
-- [Typey](https://github.com/jptaranto/typey) (for managing font schemes)
-- [Modular Scale](https://github.com/modularscale/modularscale-sass)
-- [Chroma](https://github.com/JohnAlbin/chroma) (for managing color schemes)
-- [ColorMeSass](https://github.com/RichardBray/color-me-sass) (tons of color values)
-- [Color Schemer](https://github.com/at-import/color-schemer) (manipulates colors)
+- ~~[Bourbon](http://bourbon.io/)~~ (See [updated guidance](https://thoughtbot.com/blog/you-might-not-need-bourbon))
+- ~~[Typey](https://github.com/jptaranto/typey) (for managing font schemes)~~ (unmaintained)
+- ~~[Modular Scale](https://github.com/modularscale/modularscale-sass)~~ (unmaintained)
+- ~~[Chroma](https://github.com/JohnAlbin/chroma) (for managing color schemes)~~ (unmaintained)
+- ~~[ColorMeSass](https://github.com/RichardBray/color-me-sass) (tons of color values)~~ (unmaintained)
+- ~~[Color Schemer](https://github.com/at-import/color-schemer) (manipulates colors)~~ (unmaintained)
 
 I'll add to this list as I find other useful Sass projects.
 
@@ -229,3 +247,28 @@ Using this, `ms(0)` = 1rem, `ms(3)` = 2rem, `ms(6)` = 4rem, `ms(9)` = 8rem, and 
 
 I've included this in `_defaults.scss` which you **must** import explicitly if
 you want to use it, as it is optional.
+
+
+## Development notes
+
+To build the local source:
+
+```bash
+npm install
+npm run build
+```
+
+For development watching source changes:
+
+```bash
+npm run watch
+```
+
+This project currently uses the Sass CLI to compile source files and PostCSS + Autoprefixer to apply browser-specific prefixes.
+
+- `npm run watch` now runs both Sass watch and Autoprefixer watch together.
+- `npm run compile` compiles `scss/_vitals.scss` into `css/vitals.css` and then applies Autoprefixer.
+- `npm run minify` compiles `scss/_vitals.scss` into `css/vitals.min.css` and then applies Autoprefixer.
+- `browserslist` in `package.json` determines the final vendor prefixes added to built CSS.
+
+The build produces `css/vitals.css` and `css/vitals.min.css` from `scss/_vitals.scss`.

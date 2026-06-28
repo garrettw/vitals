@@ -1,6 +1,6 @@
 {
   "name": "vitals-scss",
-  "version": "0.8.4",
+  "version": "0.9.0",
   "description": "A minimalistic bundle of a few CSS/Sass tools for building modern, flexible websites: an improved normalize, shorthand stuff for flexbox and grid, and a fluid sizing function.",
   "author": "Garrett Whitehorn",
   "license": "MIT",
@@ -23,6 +23,8 @@
     "fluid"
   ],
   "main": "scss/_vitals.scss",
+  "style": "css/vitals.css",
+  "sass": "scss/_vitals.scss",
   "browser": "css/vitals.css",
   "repository": {
     "url": "https://github.com/garrettw/vitals",
@@ -33,36 +35,28 @@
     "css/*"
   ],
   "devDependencies": {
-    "@babel/core": "^7.15.8",
-    "@babel/plugin-proposal-object-rest-spread": "^7.15.6",
-    "@babel/plugin-syntax-dynamic-import": "^7.8.3",
-    "@babel/plugin-transform-runtime": "^7.15.8",
-    "@babel/preset-env": "^7.15.8",
-    "cross-env": "^7.0.3",
-    "laravel-mix": "^6.0.0",
-    "postcss": "^7.0.0 || ^8.0.1",
-    "resolve-url-loader": "^5.0.0",
-    "sass": "^1.25.0",
-    "sass-loader": "^13.2.0",
-    "stylelint": "^16.0.0",
+    "autoprefixer": "^10.4.20",
+    "concurrently": "^10.0.3",
+    "postcss": "^8.4.40",
+    "postcss-cli": "^11.0.1",
+    "sass": "^1.75.0",
+    "stylelint": "^17.14.0",
     "stylelint-checkstyle-formatter": "^0.1",
-    "stylelint-config-standard": "^36.0.0",
-    "stylelint-config-standard-scss": "^13.0.0",
-    "webpack": "^5.0.0",
-    "webpack-cli": "^5.0.0"
+    "stylelint-config-standard": "^40.0.0",
+    "stylelint-config-standard-scss": "^17.0.0"
   },
   "scripts": {
-    "dev": "npm run development",
-    "development": "mix",
-    "watch": "mix watch",
-    "watch-poll": "mix watch -- --watch-options-poll=1000",
-    "hot": "mix watch --hot",
-    "prod": "npm run production",
-    "production": "mix --production",
+    "dev": "npm run watch",
+    "watch": "concurrently \"npm run watch:sass\" \"npm run watch:postcss\"",
+    "watch:sass": "sass --watch scss/_vitals.scss:css/vitals.css",
+    "watch:postcss": "postcss css/vitals.css --use autoprefixer -o css/vitals.css --map --watch",
+    "compile": "sass scss/_vitals.scss css/vitals.css && postcss css/vitals.css --use autoprefixer -o css/vitals.css --map",
+    "minify": "sass --style=compressed scss/_vitals.scss css/vitals.min.css && postcss css/vitals.min.css --use autoprefixer -o css/vitals.min.css",
+    "build": "npm run compile && npm run minify",
     "start": "npm run watch",
-    "build": "npm run development && npm run production",
-    "lint:css": "stylelint \"scss/**/*.css\" || exit 0",
-    "lint:css-checkstyle": "stylelint \"scss/**/*.css\" --custom-formatter ./node_modules/stylelint-checkstyle-formatter/index.js || exit 0"
+    "prepare": "npm run build",
+    "lint:css": "stylelint \"scss/**/*.scss\" || exit 0",
+    "lint:css-checkstyle": "stylelint \"scss/**/*.scss\" --custom-formatter ./node_modules/stylelint-checkstyle-formatter/index.js || exit 0"
   },
   "browserslist": [
     "last 2 years and > 0.5% in US",
