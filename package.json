@@ -27,7 +27,7 @@
   "sass": "scss/_vitals.scss",
   "browser": "css/vitals.css",
   "repository": {
-    "url": "https://github.com/garrettw/vitals",
+    "url": "git+https://github.com/garrettw/vitals.git",
     "type": "git"
   },
   "files": [
